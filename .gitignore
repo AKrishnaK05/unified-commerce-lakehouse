@@ -216,3 +216,47 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Terraform
+infrastructure/.terraform/
+infrastructure/*.tfstate
+infrastructure/*.tfstate.*
+infrastructure/*.tfvars
+infrastructure/.terraform.lock.hcl
+infrastructure/crash.log
+infrastructure/crash.*.log
+ 
+# Docker volumes / local data mounts (MinIO, Postgres, Hive Metastore data)
+**/minio-data/
+**/postgres-data/
+**/hive-metastore-data/
+**/.docker-volumes/
+ 
+# Synthetic datasets — generated, reproducible via scripts, not committed in full
+scripts/output/
+scripts/data/*.csv
+scripts/data/*.json
+scripts/data/*.parquet
+!scripts/data/samples/
+# (the !scripts/data/samples/ line above means: ignore everything in scripts/data/
+#  EXCEPT a small "samples" folder you keep for review — per Issue #4's requirement
+#  to keep a small sample dataset in Git while excluding the full generated output)
+ 
+# Delta Lake / Spark local artifacts
+**/_delta_log/
+spark-warehouse/
+metastore_db/
+derby.log
+ 
+# Airflow runtime artifacts (if running Airflow locally outside Docker)
+airflow/logs/
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/webserver_config.py
+ 
+# Great Expectations local artifacts (uncommitted checkpoints/validation results)
+quality/uncommitted/
+ 
+# OS junk (not always covered by the Python template above)
+.DS_Store
+Thumbs.db
