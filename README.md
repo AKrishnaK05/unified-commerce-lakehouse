@@ -2,9 +2,9 @@
 
 A production-grade Medallion Lakehouse (Bronze → Silver → Gold) that unifies order and marketplace data from three simulated retail channels into a single trustworthy source of truth.
 
-**Internship Project — Segment 2: Data Platform & Pipeline Engineering**
-**Problem Statement: B1 — Unified Commerce Lakehouse**
-**Author:** A. Krishna
+**Internship Project — Segment 2: Data Platform & Pipeline Engineering**\
+**Problem Statement: B1 — Unified Commerce Lakehouse**\
+**Author:** Adwaid Krishna K
 
 ---
 
@@ -58,7 +58,31 @@ Full reasoning for each choice: [`docs/adr/`](docs/adr/) *(ADRs land in Issue #1
 
 ## Getting Started
 
-*(Quickstart instructions will be added once Issue #15 — Infrastructure Provisioning — is complete. Target: `terraform apply` boots the entire stack from a clean clone.)*
+### Prerequisites
+- Docker Desktop (running)
+- Terraform >= 1.0
+### Quickstart
+ 
+```bash
+cd infrastructure
+cp terraform.tfvars.example terraform.tfvars
+# edit terraform.tfvars with your own local passwords/keys (see comments in the file)
+ 
+terraform init
+terraform apply
+```
+ 
+This provisions the entire local platform:
+ 
+| Service | URL | Purpose |
+|---|---|---|
+| MinIO Console | http://localhost:9001 | S3-compatible object storage |
+| Airflow | http://localhost:8080 | Pipeline orchestration |
+| Marquez | http://localhost:3000 | Data lineage visualization |
+| Grafana | http://localhost:3001 | Pipeline monitoring |
+| Hive Metastore | `localhost:9083` (Thrift, no UI) | Metadata catalog |
+ 
+To tear everything down: `terraform destroy` (from inside `infrastructure/`).
 
 ## Status
 
