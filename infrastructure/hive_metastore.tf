@@ -47,6 +47,7 @@ resource "docker_container" "hive_metastore" {
     env = [
         "SERVICE_NAME=metastore",
         "DB_DRIVER=postgres",
+        "IS_RESUME=true",
         "SERVICE_OPTS=-Djavax.jdo.option.ConnectionDriverName=org.postgresql.Driver -Djavax.jdo.option.ConnectionURL=jdbc:postgresql://lakehouse-hive-postgres:5432/metastore_db -Djavax.jdo.option.ConnectionUserName=hive -Djavax.jdo.option.ConnectionPassword=${var.hive_metastore_postgres_password}"
     ]
 

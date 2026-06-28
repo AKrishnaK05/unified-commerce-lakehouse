@@ -39,3 +39,9 @@ variable "marquez_postgres_password" {
   type        = string
   sensitive   = true
 }
+
+variable "grafana_admin_password" {
+    description = "Password for the grafana admin user"
+    type = string
+    sensitive = true
+}
