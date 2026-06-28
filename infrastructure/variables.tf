@@ -27,3 +27,9 @@ variable "airflow_admin_password" {
     type = string
     sensitive = true
 }
+
+variable "hive_metastore_postgres_password" {
+    description = "Password for Hive Metastores's own metadata Postgres database"
+    type = string
+    sensitive = true
+}
