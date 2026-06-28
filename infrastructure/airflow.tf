@@ -49,6 +49,7 @@ resource "docker_container" "airflow_scheduler" {
         container_path = "/opt/airflow/dags"
     }
 
+    restart = "on-failure"
     depends_on = [docker_container.airflow_init]
 }
 
@@ -73,5 +74,6 @@ resource "docker_container" "airflow_webserver" {
         container_path = "/opt/airflow/dags"
     }
 
+    restart = "on-failure"
     depends_on = [docker_container.airflow_init]
 }

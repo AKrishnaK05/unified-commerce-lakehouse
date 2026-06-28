@@ -1,14 +1,10 @@
-resource "docker_image" "postgres_hive" {
-    name = "postgres:16"
-}
-
 resource "docker_volume" "hive_postgres_data" {
     name = "lakehouse-hive-postgres-data"
 }
 
 resource "docker_container" "hive_postgres" {
     name = "lakehouse-hive-postgres"
-    image = docker_image.postgres_hive.image_id
+    image = docker_image.postgres.image_id
 
     networks_advanced {
         name = docker_network.lakehouse_net.name
@@ -34,6 +30,13 @@ resource "docker_image" "hive_metastore" {
 resource "docker_container" "hive_metastore" {
     name = "lakehouse-hive-metastore"
     image = docker_image.hive_metastore.image_id
+    restart = "on-failure"
+
+    entrypoint = [
+        "bash",
+        "-c",
+        "export HADOOP_CLIENT_OPTS=\"$HADOOP_CLIENT_OPTS -Xmx1G $SERVICE_OPTS\" && ($HIVE_HOME/bin/schematool -dbType postgres -info || $HIVE_HOME/bin/schematool -dbType postgres -initSchema) && export IS_RESUME=true && exec /entrypoint.sh"
+    ]
 
     networks_advanced {
         name = docker_network.lakehouse_net.name
@@ -47,7 +50,6 @@ resource "docker_container" "hive_metastore" {
     env = [
         "SERVICE_NAME=metastore",
         "DB_DRIVER=postgres",
-        "IS_RESUME=true",
         "SERVICE_OPTS=-Djavax.jdo.option.ConnectionDriverName=org.postgresql.Driver -Djavax.jdo.option.ConnectionURL=jdbc:postgresql://lakehouse-hive-postgres:5432/metastore_db -Djavax.jdo.option.ConnectionUserName=hive -Djavax.jdo.option.ConnectionPassword=${var.hive_metastore_postgres_password}"
     ]
 
