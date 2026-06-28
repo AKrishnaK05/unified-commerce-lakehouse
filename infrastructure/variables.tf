@@ -33,3 +33,9 @@ variable "hive_metastore_postgres_password" {
     type = string
     sensitive = true
 }
+
+variable "marquez_postgres_password" {
+  description = "Password for Marquez's metadata Postgres database"
+  type        = string
+  sensitive   = true
+}
