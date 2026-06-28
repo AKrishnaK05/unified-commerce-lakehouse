@@ -1,0 +1,12 @@
+# Copy this file to terraform.tfvars and fill in real values.
+# terraform.tfvars itself is gitignored and never committed.
+
+minio_root_password      = "change-me-to-something-real"
+airflow_postgres_password = "change-me-too"
+
+# Generate with: python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+airflow_fernet_key      = "generate-your-own-fernet-key"
+airflow_admin_password  = "change-me-as-well"
+hive_metastore_postgres_password = "change-this-too"
+marquez_postgres_password = "and-this"
+grafana_admin_password = "this-too"
