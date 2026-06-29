@@ -1,0 +1,16 @@
+# Set the default behavior to handle line endings automatically
+* text=auto
+
+# Enforce LF (Linux/Unix) line endings for code, configuration, and documentation files
+*.py text eol=lf
+*.md text eol=lf
+*.tf text eol=lf
+*.tfvars text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+*.json text eol=lf
+*.sql text eol=lf
+*.csv text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
