@@ -1,0 +1,69 @@
+# Data Contract: Shopify Orders
+#
+# This contract defines the agreed-upon shape of data coming from the
+# Shopify Orders source. Incoming data is validated against this contract
+# before being written to Bronze (see quality/shopify_contract_validation.py
+# and ingestion/shopify_ingestion.py).
+#
+# Changing this contract is a breaking-change decision and should be
+# reflected in ADR-005 (schema evolution policy) if it happens.
+
+contract:
+  name: shopify_orders_contract
+  version: "1.0"
+  owner: "E-Commerce Team"
+  source_system: "Shopify Orders API (mock)"
+  description: >
+    Defines the required schema for order data ingested from the shopify 
+    Orders source into the Bronze layer.
+
+  schema:
+    - name: order_id
+      type: string
+      required: true
+      description: "Unique order identifier"
+
+    - name: customer_id
+      type: string
+      required: true
+      description: "Foreign reference to the customer who placed the order"
+
+    - name: product_id
+      type: string
+      required: true
+      description: "Foreign reference to the ordered product"
+
+    - name: order_date
+      type: date
+      required: true
+      description: "Business date the order was placed"
+
+    - name: quantity
+      type: integer
+      required: true
+      validation: "quantity > 0"
+      description: "Number of units ordered must be positive"
+
+    - name: revenue
+      type: decimal
+      required: true
+      validation: "revenue >= 0"
+      description: "Order revenue in the source systems's currency"
+
+    - name: order_status
+      type: string
+      required: false
+      allowed_values: ["placed", "shipped", "delivered", "cancelled"]
+      description: >
+        Order status. Marked not-required because the synthetic generator
+        (and real-world upstream systems) occasionally produces records
+        with this field missing.
+
+  # Known, accepted schema evolution — fields outside the required schema
+  # above are tolerated (not rejected) but flagged, supporting forward
+  # compatibility if Shopify adds new fields before this contract is updated.
+  
+  evolution_policy:
+    unknown_fields: "warn"  # one of: reject | warn | ignore
+    missing_optional_fields: "ignore"
+    missing_required_fields: "reject"
