@@ -10,10 +10,21 @@ terraform {
             source = "aminueza/minio"
             version = "~> 2.0"
         }
+        time = {
+            source  = "hashicorp/time"
+            version = "~> 0.9"
+        }
     }
 }
 
 provider "docker" {}
+
+provider "minio" {
+  minio_server   = "localhost:9000"
+  minio_user     = var.minio_root_user
+  minio_password = var.minio_root_password
+  minio_ssl      = false
+}
 
 resource "docker_network" "lakehouse_net" {
     name = "lakehouse-network"
@@ -57,4 +68,27 @@ resource "docker_container" "minio" {
 
 resource "docker_volume" "minio_data" {
     name = "lakehouse-minio-data"
+}
+
+resource "time_sleep" "wait_for_minio" {
+  depends_on = [docker_container.minio]
+  create_duration = "10s"
+}
+
+resource "minio_s3_bucket" "bronze" {
+  bucket = "bronze"
+
+  depends_on = [time_sleep.wait_for_minio]
+}
+
+resource "minio_s3_bucket" "silver" {
+  bucket = "silver"
+
+  depends_on = [time_sleep.wait_for_minio]
+}
+
+resource "minio_s3_bucket" "gold" {
+  bucket = "gold"
+
+  depends_on = [time_sleep.wait_for_minio]
 }
