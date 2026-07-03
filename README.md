@@ -21,7 +21,7 @@ Bronze → Silver → Gold medallion architecture:
 - **Silver** — cleaned, deduplicated, conformed into canonical entities (customers, products, orders, inventory), partitioned by business date
 - **Gold** — business-ready marts: Revenue, Channel Performance, Customer 360, Inventory Turnover, partitioned by month
 
-Full architecture diagrams: [`docs/diagrams/`](docs/diagrams/) *(coming in Issue #2)*
+Full architecture diagrams: [`docs/diagrams/`](docs/diagrams/)
 
 ## Tech Stack
 
