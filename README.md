@@ -2,9 +2,10 @@
 
 A production-grade Medallion Lakehouse (Bronze → Silver → Gold) that unifies order and marketplace data from three simulated retail channels into a single trustworthy source of truth.
 
-**Internship Project — Segment 2: Data Platform & Pipeline Engineering**\
-**Problem Statement: B1 — Unified Commerce Lakehouse**\
-**Author:** Adwaid Krishna K
+**Internship Project - Segment 2: Data Platform & Pipeline Engineering**\
+**Problem Statement:** B1 - Unified Commerce Lakehouse\
+**Author:** Adwaid Krishna K\
+**Target Roles:** Data Engineer, Analytics Engineer, Big Data Engineer
 
 ---
 
