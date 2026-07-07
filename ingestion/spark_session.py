@@ -33,7 +33,7 @@ def get_spark_session(app_name: str = "unified-commerce-lakehouse") -> SparkSess
         ],
     ).getOrCreate()
 
-    spark.sparkContext.setLogLevel("WARN")
+    spark.sparkContext.setLogLevel("ERROR")
     return spark
 
 def bronze_path(table_name: str) -> str:

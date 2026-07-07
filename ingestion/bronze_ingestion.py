@@ -37,6 +37,9 @@ def add_ingestion_metadata(df, source_system: str):
         .withColumn("_ingestion_date", F.to_date(F.lit(INGESTION_TIMESTAMP)))
     )
 
+def clean_column_names(df):
+    return df.select([F.col(c).alias(c.strip()) for c in df.columns])
+
 # Per-source ingestion functions
 
 def ingest_shopify_orders(spark: SparkSession) -> None:
@@ -56,6 +59,7 @@ def ingest_shopify_orders(spark: SparkSession) -> None:
         return
 
     df = spark.createDataFrame(pdf)
+    df = clean_column_names(df)
     df = add_ingestion_metadata(df, source_system="shopify_orders")
 
     output_path = bronze_path("shopify_orders")
@@ -73,6 +77,7 @@ def ingest_amazon_orders(spark: SparkSession) -> None:
     path = SOURCES["amazon_orders"]
 
     df = spark.read.option("header", "true").option("inferSchema", "true").csv(path)
+    df = clean_column_names(df)
     df = add_ingestion_metadata(df, source_system="amazon_orders")
 
     output_path = bronze_path("amazon_orders")
@@ -90,6 +95,7 @@ def ingest_inventory_feed(spark: SparkSession) -> None:
     path = SOURCES["inventory_feed"]
 
     df = spark.read.option("header", "true").option("inferSchema", "true").csv(path)
+    df = clean_column_names(df)
     df = add_ingestion_metadata(df, source_system="inventory_feed")
 
     output_path = bronze_path("inventory_feed")
