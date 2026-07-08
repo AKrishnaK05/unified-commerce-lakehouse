@@ -9,6 +9,10 @@ MINIO_ACCESS_KEY = os.environ.get("MINIO_ACCESS_KEY", "minioadmin")
 MINIO_SECRET_KEY = os.environ.get("MINIO_SECRET_KEY", "minio@ak")
 
 def get_spark_session(app_name: str = "unified-commerce-lakehouse") -> SparkSession:
+    # Resolve workspace root and config paths dynamically
+    workspace_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    log4j2_path = os.path.join(workspace_root, "conf", "log4j2.properties").replace("\\", "/")
+
     builder = (
         SparkSession.builder.appName(app_name)
         .config("spark.driver.memory", "2g")
@@ -23,7 +27,12 @@ def get_spark_session(app_name: str = "unified-commerce-lakehouse") -> SparkSess
         .config("spark.hadoop.fs.s3a.path.style.access", "true")
         .config("spark.hadoop.fs.s3a.connection.ssl.enabled", "false")
         .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
+        .config("spark.ui.showConsoleProgress", "false")
     )
+
+    if os.path.exists(log4j2_path):
+        extra_ops = f'"-Dlog4j2.configurationFile=file:///{log4j2_path}"'
+        builder = builder.config("spark.driver.extraJavaOptions", extra_ops)
 
     spark = configure_spark_with_delta_pip(
         builder,
@@ -35,6 +44,7 @@ def get_spark_session(app_name: str = "unified-commerce-lakehouse") -> SparkSess
 
     spark.sparkContext.setLogLevel("ERROR")
     return spark
+
 
 def bronze_path(table_name: str) -> str:
     return f"s3a://bronze/{table_name}"

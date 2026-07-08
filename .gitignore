@@ -260,3 +260,6 @@ quality/uncommitted/
 # OS junk (not always covered by the Python template above)
 .DS_Store
 Thumbs.db
+
+# Local logging configurations
+conf/
