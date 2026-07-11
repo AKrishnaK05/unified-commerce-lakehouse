@@ -62,7 +62,7 @@ resource "docker_container" "airflow_webserver" {
     }
 
     env = local.airflow_common_env
-    command = ["webserver"]
+    command = ["bash", "-c", "rm -f /opt/airflow/airflow-webserver.pid && exec airflow webserver"]
 
     ports {
         internal = 8080
