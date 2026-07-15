@@ -63,53 +63,11 @@ with DAG(
             print(f"gold.{table}: {len(df)} rows ✓")
 
     def emit_lineage_events(**context):
-        """Emit OpenLineage events to Marquez for this pipeline run.
-        Full implementation in Issue #14."""
-        import requests
-        import json
-        from datetime import datetime, timezone
-
-        marquez_url = "http://lakehouse-marquez:5000/api/v1/lineage"
+        import sys
+        sys.path.insert(0, "/opt/airflow")
+        from quality.lineage_emitter import emit_full_pipeline_lineage
         run_id = str(context.get("run_id", "manual"))
- 
-        event = {
-            "eventType": "COMPLETE",
-            "eventTime": datetime.now(timezone.utc).isoformat(),
-            "run": {
-                "runId": run_id,
-            },
-            "job": {
-                "namespace": "unified-commerce-lakehouse",
-                "name": "full_pipeline_run",
-            },
-            "inputs": [
-                {"namespace": "unified-commerce-lakehouse", "name": "bronze.shopify_orders"},
-                {"namespace": "unified-commerce-lakehouse", "name": "bronze.amazon_orders"},
-                {"namespace": "unified-commerce-lakehouse", "name": "bronze.inventory_feed"},
-            ],
-            "outputs": [
-                {"namespace": "unified-commerce-lakehouse", "name": "gold.revenue_mart"},
-                {"namespace": "unified-commerce-lakehouse", "name": "gold.channel_performance_mart"},
-                {"namespace": "unified-commerce-lakehouse", "name": "gold.customer_360_mart"},
-                {"namespace": "unified-commerce-lakehouse", "name": "gold.inventory_turnover_mart"},
-            ],
-            "producer": "https://github.com/AKrishnaK05/unified-commerce-lakehouse",
-        }
- 
-        try:
-            response = requests.post(
-                marquez_url,
-                data=json.dumps(event),
-                headers={"Content-Type": "application/json"},
-                timeout=10,
-            )
-            if response.status_code == 200:
-                print(f"Lineage event emitted successfully to Marquez")
-            else:
-                print(f"Marquez returned {response.status_code}: {response.text}")
-        except Exception as e:
-            # Non-blocking — lineage failure should not fail the pipeline
-            print(f"Warning: could not emit lineage event: {e}")
+        emit_full_pipeline_lineage(run_id=run_id)
  
     bronze_dq = PythonOperator(
         task_id="bronze_dq_checks",
@@ -132,4 +90,4 @@ with DAG(
     )
  
     # DQ checks run in parallel, then lineage is emitted once all pass
-    [bronze_dq, silver_dq, gold_dq] >> emit_lineage
+    [bronze_dq, silver_dq, gold_dq] >> emit_lineage        
