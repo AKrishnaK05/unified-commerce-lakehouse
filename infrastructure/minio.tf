@@ -6,10 +6,6 @@ terraform {
             source = "kreuzwerker/docker"
             version = "~> 3.0"
         }
-        minio = {
-            source = "aminueza/minio"
-            version = "~> 2.0"
-        }
         time = {
             source  = "hashicorp/time"
             version = "~> 0.9"
@@ -18,13 +14,6 @@ terraform {
 }
 
 provider "docker" {}
-
-provider "minio" {
-  minio_server   = "localhost:9000"
-  minio_user     = var.minio_root_user
-  minio_password = var.minio_root_password
-  minio_ssl      = false
-}
 
 resource "docker_network" "lakehouse_net" {
     name = "lakehouse-network"
@@ -75,20 +64,28 @@ resource "time_sleep" "wait_for_minio" {
   create_duration = "10s"
 }
 
-resource "minio_s3_bucket" "bronze" {
-  bucket = "bronze"
-
-  depends_on = [time_sleep.wait_for_minio]
+resource "docker_image" "minio_mc" {
+  name = "minio/mc:latest"
 }
 
-resource "minio_s3_bucket" "silver" {
-  bucket = "silver"
+resource "docker_container" "minio_create_buckets" {
+  name     = "lakehouse-minio-setup"
+  image    = docker_image.minio_mc.image_id
+  must_run = false
 
-  depends_on = [time_sleep.wait_for_minio]
+  networks_advanced {
+    name = docker_network.lakehouse_net.name
+  }
+
+  entrypoint = [
+    "/bin/sh",
+    "-c",
+    "mc alias set myminio http://lakehouse-minio:9000 ${var.minio_root_user} ${var.minio_root_password} && mc mb --ignore-existing myminio/bronze && mc mb --ignore-existing myminio/silver && mc mb --ignore-existing myminio/gold"
+  ]
+
+  depends_on = [
+    docker_container.minio,
+    time_sleep.wait_for_minio
+  ]
 }
 
-resource "minio_s3_bucket" "gold" {
-  bucket = "gold"
-
-  depends_on = [time_sleep.wait_for_minio]
-}
