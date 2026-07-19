@@ -13,7 +13,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id="silver-transformations",
+    dag_id="silver_transformations",
     default_args=default_args,
     description="Build 4 canonical Silver entities from Bronze Delta tables",
     schedule_interval=None,

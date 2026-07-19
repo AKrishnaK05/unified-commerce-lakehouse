@@ -70,7 +70,7 @@ with DAG(
 
     trigger_silver = TriggerDagRunOperator(
         task_id="trigger_silver_dag",
-        trigger_dag_id="silver_transformation",
+        trigger_dag_id="silver_transformations",
         wait_for_completion=False,
     )
 
