@@ -8,6 +8,7 @@ locals {
     "MINIO_ENDPOINT=http://lakehouse-minio:9000",
     "MINIO_ACCESS_KEY=${var.minio_root_user}",
     "MINIO_SECRET_KEY=${var.minio_root_password}",
+    "MARQUEZ_URL=http://lakehouse-marquez:5000/api/v1/lineage",
     "PYTHONPATH=/opt/airflow"
   ]
 }

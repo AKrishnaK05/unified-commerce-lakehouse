@@ -52,7 +52,7 @@ def emit_bronze_lineage(run_id: str = None) -> None:
     mappings = [
         {
             "job": "ingest_shopify_orders",
-            "input": _dataset("source.shopify_orders.csv"),
+            "input": _dataset("source.shopify_orders_csv"),
             "output": _dataset("bronze.shopify_orders", fields=[
                 {"name": "order_id", "type": "STRING"},
                 {"name": "customer_id", "type": "STRING"},
@@ -102,17 +102,28 @@ def emit_bronze_lineage(run_id: str = None) -> None:
     ]
  
     for m in mappings:
+        job_run_id = str(uuid.uuid4())
         event = {
             "eventType": "COMPLETE",
             "eventTime": _now(),
-            "run": {"runId": run_id},
+            "run": {
+                "runId": job_run_id,
+                "facets": {
+                    "parent": {
+                        "_producer": PRODUCER,
+                        "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/ParentRunFacet.json",
+                        "run": {"runId": run_id},
+                        "job": {"namespace": NAMESPACE, "name": "dq_lineage_checkpoint"}
+                    }
+                }
+            },
             "job": {"namespace": NAMESPACE, "name": m["job"]},
             "inputs": [m["input"]],
             "outputs": [m["output"]],
             "producer": PRODUCER,
         }
         success = _emit(event)
-        status = "✓" if success else "✗"
+        status = "[OK]" if success else "[FAIL]"
         print(f"    {status} {m['job']}")
  
 # Silver lineage events
@@ -177,17 +188,28 @@ def emit_silver_lineage(run_id: str = None) -> None:
     ]
  
     for m in mappings:
+        job_run_id = str(uuid.uuid4())
         event = {
             "eventType": "COMPLETE",
             "eventTime": _now(),
-            "run": {"runId": run_id},
+            "run": {
+                "runId": job_run_id,
+                "facets": {
+                    "parent": {
+                        "_producer": PRODUCER,
+                        "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/ParentRunFacet.json",
+                        "run": {"runId": run_id},
+                        "job": {"namespace": NAMESPACE, "name": "dq_lineage_checkpoint"}
+                    }
+                }
+            },
             "job": {"namespace": NAMESPACE, "name": m["job"]},
             "inputs": m["inputs"],
             "outputs": [m["output"]],
             "producer": PRODUCER,
         }
         success = _emit(event)
-        status = "✓" if success else "✗"
+        status = "[OK]" if success else "[FAIL]"
         print(f"    {status} {m['job']}")
  
 # Gold lineage events
@@ -261,17 +283,28 @@ def emit_gold_lineage(run_id: str = None) -> None:
     ]
  
     for m in mappings:
+        job_run_id = str(uuid.uuid4())
         event = {
             "eventType": "COMPLETE",
             "eventTime": _now(),
-            "run": {"runId": run_id},
+            "run": {
+                "runId": job_run_id,
+                "facets": {
+                    "parent": {
+                        "_producer": PRODUCER,
+                        "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/ParentRunFacet.json",
+                        "run": {"runId": run_id},
+                        "job": {"namespace": NAMESPACE, "name": "dq_lineage_checkpoint"}
+                    }
+                }
+            },
             "job": {"namespace": NAMESPACE, "name": m["job"]},
             "inputs": m["inputs"],
             "outputs": [m["output"]],
             "producer": PRODUCER,
         }
         success = _emit(event)
-        status = "✓" if success else "✗"
+        status = "[OK]" if success else "[FAIL]"
         print(f"    {status} {m['job']}")
  
 # Main — emit all lineage events for a full pipeline run
