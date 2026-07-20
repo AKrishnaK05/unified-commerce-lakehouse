@@ -1,31 +1,47 @@
 resource "docker_image" "grafana" {
-    name = "grafana/grafana:11.1.0"
+  name = "grafana/grafana:11.1.0"
 }
 
 resource "docker_volume" "grafana_data" {
-    name = "lakehouse-grafana-data"
+  name = "lakehouse-grafana-data"
 }
 
 resource "docker_container" "grafana" {
-    name = "lakehouse-grafana"
-    image = docker_image.grafana.image_id
+  name  = "lakehouse-grafana"
+  image = docker_image.grafana.image_id
 
-    networks_advanced {
-        name = docker_network.lakehouse_net.name
-    }
+  networks_advanced {
+    name = docker_network.lakehouse_net.name
+  }
 
-    ports {
-        internal = 3000
-        external = 3001
-    }
+  ports {
+    internal = 3000
+    external = 3001
+  }
 
-    env = [
-        "GF_SECURITY_ADMIN_USER=admin",
-        "GF_SECURITY_ADMIN_PASSWORD=${var.grafana_admin_password}"
-    ]
+  env = [
+    "GF_SECURITY_ADMIN_USER=admin",
+    "GF_SECURITY_ADMIN_PASSWORD=${var.grafana_admin_password}",
+    "AIRFLOW_POSTGRES_PASSWORD=${var.airflow_postgres_password}"
+  ]
 
-    volumes {
-        volume_name = docker_volume.grafana_data.name
-        container_path = "/var/lib/grafana"
-    }
+  volumes {
+    volume_name    = docker_volume.grafana_data.name
+    container_path = "/var/lib/grafana"
+  }
+
+  volumes {
+    host_path      = abspath("${path.module}/grafana/provisioning/datasources")
+    container_path = "/etc/grafana/provisioning/datasources"
+  }
+
+  volumes {
+    host_path      = abspath("${path.module}/grafana/provisioning/dashboards")
+    container_path = "/etc/grafana/provisioning/dashboards"
+  }
+
+  volumes {
+    host_path      = abspath("${path.module}/grafana/dashboards")
+    container_path = "/etc/grafana/provisioning/dashboards/lakehouse"
+  }
 }

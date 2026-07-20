@@ -1,0 +1,20 @@
+apiVersion: 1
+
+datasources:
+  - name: Airflow Postgres
+    type: postgres
+    uid: airflow-postgres
+    url: lakehouse-airflow-postgres:5432
+    database: airflow
+    user: airflow
+    secureJsonData:
+      password: "${AIRFLOW_POSTGRES_PASSWORD}"
+    jsonData:
+      sslmode: disable
+      maxOpenConns: 5
+      maxIdleConns: 5
+      connMaxLifetime: 14400
+      postgresVersion: 1600
+      timescaledb: false
+    isDefault: true
+    editable: true
