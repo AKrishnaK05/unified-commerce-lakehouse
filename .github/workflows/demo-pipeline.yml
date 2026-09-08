@@ -1,0 +1,129 @@
+name: Demo Pipeline — Unified Commerce Lakehouse
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "ingestion/**"
+      - "transformations/**"
+      - "quality/**"
+      - "scripts/**"
+      - "serving/**"
+      - "requirements.txt"
+      - ".github/workflows/demo-pipeline.yml"
+
+concurrency:
+  group: demo-pipeline
+  cancel-in-progress: false
+
+jobs:
+  run-pipeline:
+    name: Run Bronze → Silver → Gold + DQ
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      MINIO_ENDPOINT: http://localhost:9000
+      MINIO_ACCESS_KEY: minioadmin
+      AWS_ACCESS_KEY_ID: minioadmin
+      AWS_DEFAULT_REGION: us-east-1
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+
+      - name: Create CI MinIO credentials
+        run: echo "MINIO_SECRET_KEY=ci-demo-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_ENV"
+
+      - name: Start MinIO
+        run: |
+          docker run -d --name lakehouse-minio-ci -p 9000:9000 -p 9001:9001 \
+            -e MINIO_ROOT_USER="$MINIO_ACCESS_KEY" \
+            -e MINIO_ROOT_PASSWORD="$MINIO_SECRET_KEY" \
+            minio/minio:latest server /data --console-address ":9001"
+
+      - name: Wait for MinIO
+        run: |
+          for i in {1..30}; do
+            if curl -fsS http://localhost:9000/minio/health/live >/dev/null; then
+              echo "MinIO is ready"
+              break
+            fi
+            sleep 2
+          done
+          curl -fsS http://localhost:9000/minio/health/live >/dev/null
+
+      - name: Create lakehouse buckets
+        run: |
+          docker run --rm --network host minio/mc:latest alias set ci http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
+          docker run --rm --network host minio/mc:latest mb --ignore-existing ci/bronze
+          docker run --rm --network host minio/mc:latest mb --ignore-existing ci/silver
+          docker run --rm --network host minio/mc:latest mb --ignore-existing ci/gold
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate synthetic source data
+        run: python scripts/generate_synthetic_data.py
+
+      - name: Run Bronze ingestion
+        run: python ingestion/bronze_ingestion.py
+
+      - name: Run Bronze data quality checks
+        run: python quality/bronze_expectations.py
+
+      - name: Run Silver transformations
+        run: python transformations/silver_transformations.py
+
+      - name: Run Silver data quality checks
+        run: python quality/silver_expectations.py
+
+      - name: Run Gold transformations
+        run: python transformations/gold_transformations.py
+
+      - name: Build dashboard snapshot
+        run: python serving/export_public_snapshot.py
+
+      - name: Write pipeline metadata
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+
+          metadata = {
+              "pipeline_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "workflow_run_number": os.environ.get("GITHUB_RUN_NUMBER"),
+              "commit_sha": os.environ.get("GITHUB_SHA"),
+              "ref": os.environ.get("GITHUB_REF_NAME"),
+              "status": "success",
+              "completed_at": datetime.now(timezone.utc).isoformat(),
+              "execution_mode": "github_actions_ci",
+          }
+
+          with open("ci-output/pipeline_run.json", "w") as f:
+              json.dump(metadata, f, indent=2)
+          PY
+
+      - name: Upload pipeline output
+        uses: actions/upload-artifact@v4
+        with:
+          name: lakehouse-demo-run-${{ github.run_number }}
+          path: ci-output/
+          retention-days: 7
+
+      - name: Cleanup MinIO
+        if: always()
+        run: docker rm -f lakehouse-minio-ci || true
