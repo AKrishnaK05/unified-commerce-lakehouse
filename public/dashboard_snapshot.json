@@ -1,0 +1,16 @@
+{
+  "last_updated": null,
+  "pipeline_run_id": null,
+  "metrics": {
+    "total_revenue": 0,
+    "total_orders": 0,
+    "average_order_value": 0,
+    "customers": 0,
+    "units_sold": 0
+  },
+  "revenue_by_channel": [],
+  "revenue_trend": [],
+  "channel_performance": [],
+  "top_customers": [],
+  "inventory_health": []
+}
