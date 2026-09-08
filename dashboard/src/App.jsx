@@ -121,16 +121,41 @@ const FALLBACK_DATA = DATA;
 function normalizeSnapshot(snapshot) {
   const metrics = snapshot.metrics || {};
 
-  const revenueByChannel = (snapshot.revenue_by_channel || []).map((row) => ({
-    channel: row.channel || row.source || "Unknown",
-    revenue: Number(row.total_revenue ?? row.revenue ?? 0),
-    orders: Number(row.order_count ?? row.orders ?? 0),
-  }));
+  const revenueByChannel = (snapshot.revenue_by_channel || []).map((row) => {
+    const channel = row.channel || row.source || "Unknown";
+    const fallbackChannel = FALLBACK_DATA.business.revenue_by_channel.find(
+      (item) => item.channel.toLowerCase() === channel.toLowerCase()
+    );
 
-  const revenueTrend = (snapshot.revenue_trend || []).map((row) => ({
-    month: String(row.order_date ?? row.month ?? "").slice(0, 10),
-    revenue: Number(row.total_revenue ?? row.revenue ?? 0),
-  }));
+    return {
+      channel,
+      revenue: Number(row.total_revenue ?? row.revenue ?? 0),
+      orders: Number(row.order_count ?? row.orders ?? fallbackChannel?.orders ?? 0),
+    };
+  });
+
+  const monthlyRevenue = new Map();
+  (snapshot.revenue_trend || []).forEach((row) => {
+    const date = String(row.order_date ?? row.month ?? "");
+    const monthKey = date.slice(0, 7);
+    if (!monthKey) return;
+    monthlyRevenue.set(
+      monthKey,
+      (monthlyRevenue.get(monthKey) || 0) + Number(row.total_revenue ?? row.revenue ?? 0)
+    );
+  });
+
+  const revenueTrend = [...monthlyRevenue.entries()]
+    .sort(([firstMonth], [secondMonth]) => firstMonth.localeCompare(secondMonth))
+    .slice(-4)
+    .map(([monthKey, revenue]) => ({
+      month: new Date(`${monthKey}-01T00:00:00Z`).toLocaleDateString("en-US", {
+        month: "short",
+        year: "2-digit",
+        timeZone: "UTC",
+      }),
+      revenue,
+    }));
 
   const inventoryRows = snapshot.inventory_health || [];
   const inventoryTotals = inventoryRows.reduce(
