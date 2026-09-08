@@ -1,6 +1,7 @@
 # Shared Spark session factory, configured for Delta Lake on MinIO.
 
 import os
+from urllib.parse import urlparse
 from delta import configure_spark_with_delta_pip
 from pyspark.sql import SparkSession
 
@@ -8,10 +9,18 @@ MINIO_ENDPOINT = os.environ.get("MINIO_ENDPOINT", "http://localhost:9000")
 MINIO_ACCESS_KEY = os.environ.get("MINIO_ACCESS_KEY", "minioadmin")
 MINIO_SECRET_KEY = os.environ.get("MINIO_SECRET_KEY", "minio@ak")
 
+def _resolve_s3a_endpoint(endpoint: str) -> tuple[str, str]:
+    parsed = urlparse(endpoint)
+    if parsed.scheme:
+        return parsed.netloc, str(parsed.scheme == "https").lower()
+    return endpoint, "false"
+
 def get_spark_session(app_name: str = "unified-commerce-lakehouse") -> SparkSession:
     # Resolve workspace root and config paths dynamically
     workspace_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     log4j2_path = os.path.join(workspace_root, "conf", "log4j2.properties").replace("\\", "/")
+
+    s3a_endpoint, s3a_ssl_enabled = _resolve_s3a_endpoint(MINIO_ENDPOINT)
 
     builder = (
         SparkSession.builder.appName(app_name)
@@ -21,11 +30,15 @@ def get_spark_session(app_name: str = "unified-commerce-lakehouse") -> SparkSess
             "spark.sql.catalog.spark_catalog",
             "org.apache.spark.sql.delta.catalog.DeltaCatalog",
         )
-        .config("spark.hadoop.fs.s3a.endpoint", MINIO_ENDPOINT)
+        .config("spark.hadoop.fs.s3a.endpoint", s3a_endpoint)
         .config("spark.hadoop.fs.s3a.access.key", MINIO_ACCESS_KEY)
         .config("spark.hadoop.fs.s3a.secret.key", MINIO_SECRET_KEY)
+        .config(
+            "spark.hadoop.fs.s3a.aws.credentials.provider",
+            "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider",
+        )
         .config("spark.hadoop.fs.s3a.path.style.access", "true")
-        .config("spark.hadoop.fs.s3a.connection.ssl.enabled", "false")
+        .config("spark.hadoop.fs.s3a.connection.ssl.enabled", s3a_ssl_enabled)
         .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
         .config("spark.ui.showConsoleProgress", "false")
     )

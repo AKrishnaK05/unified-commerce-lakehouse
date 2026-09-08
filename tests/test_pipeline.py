@@ -147,6 +147,22 @@ class TestBronzeIngestionMetadata:
             assert row["_source_system"] == "test_source"
         finally:
             spark.stop()
+
+
+class TestSparkSessionConfig:
+    def test_resolve_s3a_endpoint_from_http_url(self):
+        from ingestion.spark_session import _resolve_s3a_endpoint
+
+        endpoint, ssl_enabled = _resolve_s3a_endpoint("http://localhost:9000")
+        assert endpoint == "localhost:9000"
+        assert ssl_enabled == "false"
+
+    def test_resolve_s3a_endpoint_from_https_url(self):
+        from ingestion.spark_session import _resolve_s3a_endpoint
+
+        endpoint, ssl_enabled = _resolve_s3a_endpoint("https://minio.example.com")
+        assert endpoint == "minio.example.com"
+        assert ssl_enabled == "true"
  
 # Silver deduplication tests
  
