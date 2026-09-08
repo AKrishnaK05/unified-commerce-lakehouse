@@ -114,6 +114,8 @@ jobs:
           import os
           from datetime import datetime, timezone
 
+          os.makedirs("ci-output", exist_ok=True)
+
           metadata = {
               "pipeline_run_id": os.environ.get("GITHUB_RUN_ID"),
               "workflow_run_number": os.environ.get("GITHUB_RUN_NUMBER"),
