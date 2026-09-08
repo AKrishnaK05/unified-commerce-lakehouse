@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-08T20:56:51.160784+00:00",
-  "pipeline_run_id": "34277186384",
+  "last_updated": "2026-09-08T21:43:44.584496+00:00",
+  "pipeline_run_id": "34281888295",
   "metrics": {
     "total_revenue": 199352.38,
     "total_orders": 800,
@@ -85,11 +85,11 @@
     },
     {
       "order_date": "2026-06-25",
-      "total_revenue": 1385.56
+      "total_revenue": 1323.65
     },
     {
       "order_date": "2026-06-26",
-      "total_revenue": 1558.12
+      "total_revenue": 1620.03
     },
     {
       "order_date": "2026-06-27",
@@ -161,11 +161,11 @@
     },
     {
       "order_date": "2026-07-14",
-      "total_revenue": 2019.51
+      "total_revenue": 1518.05
     },
     {
       "order_date": "2026-07-15",
-      "total_revenue": 1372.29
+      "total_revenue": 1873.75
     },
     {
       "order_date": "2026-07-16",
@@ -277,11 +277,11 @@
     },
     {
       "order_date": "2026-08-12",
-      "total_revenue": 2981.46
+      "total_revenue": 2688.27
     },
     {
       "order_date": "2026-08-13",
-      "total_revenue": 1498.73
+      "total_revenue": 1791.92
     },
     {
       "order_date": "2026-08-14",
@@ -309,11 +309,11 @@
     },
     {
       "order_date": "2026-08-20",
-      "total_revenue": 1926.2400000000002
+      "total_revenue": 1721.64
     },
     {
       "order_date": "2026-08-21",
-      "total_revenue": 2515.77
+      "total_revenue": 2720.37
     },
     {
       "order_date": "2026-08-22",
@@ -325,11 +325,11 @@
     },
     {
       "order_date": "2026-08-24",
-      "total_revenue": 2433.95
+      "total_revenue": 2136.38
     },
     {
       "order_date": "2026-08-25",
-      "total_revenue": 2293.69
+      "total_revenue": 2591.26
     },
     {
       "order_date": "2026-08-26",
@@ -381,27 +381,27 @@
     },
     {
       "order_date": "2026-09-07",
-      "total_revenue": 3566.99
+      "total_revenue": 3084.32
     },
     {
       "order_date": "2026-09-08",
-      "total_revenue": 1008.57
+      "total_revenue": 1491.24
     }
   ],
   "channel_performance": [
     {
       "order_month": "2026-06",
       "channel": "amazon",
-      "total_revenue": 15223.890000000001,
+      "total_revenue": 15223.89,
       "total_units_sold": 185,
       "total_orders": 61,
-      "avg_order_value": 249.57196721311476,
+      "avg_order_value": 249.57196721311473,
       "unique_customers": 47
     },
     {
       "order_month": "2026-06",
       "channel": "shopify",
-      "total_revenue": 31313.170000000002,
+      "total_revenue": 31313.17,
       "total_units_sold": 337,
       "total_orders": 118,
       "avg_order_value": 265.3658474576271,
@@ -446,10 +446,10 @@
     {
       "order_month": "2026-09",
       "channel": "amazon",
-      "total_revenue": 8238.69,
+      "total_revenue": 8238.689999999999,
       "total_units_sold": 94,
       "total_orders": 32,
-      "avg_order_value": 257.4590625,
+      "avg_order_value": 257.45906249999996,
       "unique_customers": 30
     },
     {
@@ -466,7 +466,7 @@
     {
       "customer_id": "CUST-00114",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 3114.4900000000002,
       "total_orders": 11,
       "total_units_purchased": 27,
@@ -479,7 +479,7 @@
     {
       "customer_id": "CUST-00013",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2907.4,
       "total_orders": 9,
       "total_units_purchased": 28,
@@ -492,7 +492,7 @@
     {
       "customer_id": "CUST-00085",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2876.21,
       "total_orders": 9,
       "total_units_purchased": 22,
@@ -505,7 +505,7 @@
     {
       "customer_id": "CUST-00135",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2839.01,
       "total_orders": 9,
       "total_units_purchased": 24,
@@ -518,7 +518,7 @@
     {
       "customer_id": "CUST-00026",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2648.54,
       "total_orders": 9,
       "total_units_purchased": 28,
@@ -531,7 +531,7 @@
     {
       "customer_id": "CUST-00108",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2502.13,
       "total_orders": 8,
       "total_units_purchased": 20,
@@ -544,7 +544,7 @@
     {
       "customer_id": "CUST-00077",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2495.95,
       "total_orders": 11,
       "total_units_purchased": 37,
@@ -557,7 +557,7 @@
     {
       "customer_id": "CUST-00118",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2474.2299999999996,
       "total_orders": 8,
       "total_units_purchased": 21,
@@ -570,11 +570,11 @@
     {
       "customer_id": "CUST-00090",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
-      "lifetime_revenue": 2463.3500000000004,
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
+      "lifetime_revenue": 2463.35,
       "total_orders": 11,
       "total_units_purchased": 27,
-      "avg_order_value": 223.94090909090912,
+      "avg_order_value": 223.9409090909091,
       "first_order_date": "2026-06-16",
       "last_order_date": "2026-09-07",
       "channels_used": 2,
@@ -583,7 +583,7 @@
     {
       "customer_id": "CUST-00072",
       "source": "shopify",
-      "_created_at": "2026-09-08 20:56:02.010712+00:00",
+      "_created_at": "2026-09-08 21:42:44.421793+00:00",
       "lifetime_revenue": 2351.58,
       "total_orders": 10,
       "total_units_purchased": 27,
@@ -596,162 +596,6 @@
   ],
   "inventory_health": [
     {
-      "inventory_id": "INV-00004",
-      "product_id": "PROD-0007",
-      "warehouse_id": "WH-02",
-      "quantity_available": 140,
-      "quantity_reserved": 25,
-      "net_available": 115,
-      "total_units_sold": 17,
-      "turnover_ratio": 0.12142857142857143,
-      "last_updated": "2026-09-07 07:12:32.298540+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00006",
-      "product_id": "PROD-0019",
-      "warehouse_id": "WH-03",
-      "quantity_available": 883,
-      "quantity_reserved": 91,
-      "net_available": 792,
-      "total_units_sold": 17,
-      "turnover_ratio": 0.01925254813137033,
-      "last_updated": "2026-09-07 02:01:40.675667+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00008",
-      "product_id": "PROD-0023",
-      "warehouse_id": "WH-03",
-      "quantity_available": 649,
-      "quantity_reserved": 7,
-      "net_available": 642,
-      "total_units_sold": 48,
-      "turnover_ratio": 0.07395993836671803,
-      "last_updated": "2026-09-07 13:14:03.104271+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00011",
-      "product_id": "PROD-0063",
-      "warehouse_id": "WH-01",
-      "quantity_available": 132,
-      "quantity_reserved": 78,
-      "net_available": 54,
-      "total_units_sold": 29,
-      "turnover_ratio": 0.2196969696969697,
-      "last_updated": "2026-09-07 14:48:11.119274+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00017",
-      "product_id": "PROD-0032",
-      "warehouse_id": "WH-02",
-      "quantity_available": 710,
-      "quantity_reserved": 44,
-      "net_available": 666,
-      "total_units_sold": 39,
-      "turnover_ratio": 0.054929577464788736,
-      "last_updated": "2026-09-07 23:01:37.749521+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00018",
-      "product_id": "PROD-0040",
-      "warehouse_id": "WH-02",
-      "quantity_available": 105,
-      "quantity_reserved": 49,
-      "net_available": 56,
-      "total_units_sold": 37,
-      "turnover_ratio": 0.3523809523809524,
-      "last_updated": "2026-09-07 23:46:53.338228+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00031",
-      "product_id": "PROD-0003",
-      "warehouse_id": "WH-01",
-      "quantity_available": 706,
-      "quantity_reserved": 14,
-      "net_available": 692,
-      "total_units_sold": 41,
-      "turnover_ratio": 0.05807365439093484,
-      "last_updated": "2026-09-07 20:00:50.648814+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00032",
-      "product_id": "PROD-0054",
-      "warehouse_id": "WH-04",
-      "quantity_available": 389,
-      "quantity_reserved": 15,
-      "net_available": 374,
-      "total_units_sold": 32,
-      "turnover_ratio": 0.08226221079691516,
-      "last_updated": "2026-09-07 20:06:39.040355+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00033",
-      "product_id": "PROD-0071",
-      "warehouse_id": "WH-03",
-      "quantity_available": 485,
-      "quantity_reserved": 89,
-      "net_available": 396,
-      "total_units_sold": 44,
-      "turnover_ratio": 0.09072164948453608,
-      "last_updated": "2026-09-07 21:17:13.152985+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00037",
-      "product_id": "PROD-0078",
-      "warehouse_id": "WH-02",
-      "quantity_available": 428,
-      "quantity_reserved": 13,
-      "net_available": 415,
-      "total_units_sold": 14,
-      "turnover_ratio": 0.03271028037383177,
-      "last_updated": "2026-09-07 04:29:49.214285+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00038",
-      "product_id": "PROD-0066",
-      "warehouse_id": "WH-05",
-      "quantity_available": 120,
-      "quantity_reserved": 36,
-      "net_available": 84,
-      "total_units_sold": 11,
-      "turnover_ratio": 0.09166666666666666,
-      "last_updated": "2026-09-07 23:28:40.248923+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00044",
-      "product_id": "PROD-0062",
-      "warehouse_id": "WH-03",
-      "quantity_available": 240,
-      "quantity_reserved": 0,
-      "net_available": 240,
-      "total_units_sold": 21,
-      "turnover_ratio": 0.0875,
-      "last_updated": "2026-09-07 02:22:27.298603+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00048",
-      "product_id": "PROD-0013",
-      "warehouse_id": "WH-03",
-      "quantity_available": 659,
-      "quantity_reserved": 29,
-      "net_available": 630,
-      "total_units_sold": 26,
-      "turnover_ratio": 0.03945371775417299,
-      "last_updated": "2026-09-07 23:30:38.919881+00:00",
-      "order_month": "2026-09"
-    },
-    {
       "inventory_id": "INV-00001",
       "product_id": "PROD-0010",
       "warehouse_id": "WH-04",
@@ -760,7 +604,7 @@
       "net_available": 886,
       "total_units_sold": 25,
       "turnover_ratio": 0.027472527472527472,
-      "last_updated": "2026-09-06 18:05:50.049025+00:00",
+      "last_updated": "2026-09-06 18:52:19.049025+00:00",
       "order_month": "2026-09"
     },
     {
@@ -772,7 +616,7 @@
       "net_available": 457,
       "total_units_sold": 23,
       "turnover_ratio": 0.04609218436873747,
-      "last_updated": "2026-09-06 19:23:44.822444+00:00",
+      "last_updated": "2026-09-06 20:10:13.822444+00:00",
       "order_month": "2026-09"
     },
     {
@@ -784,7 +628,7 @@
       "net_available": 762,
       "total_units_sold": 31,
       "turnover_ratio": 0.03964194373401535,
-      "last_updated": "2026-09-06 12:25:02.004072+00:00",
+      "last_updated": "2026-09-06 13:11:31.004072+00:00",
       "order_month": "2026-09"
     },
     {
@@ -796,7 +640,7 @@
       "net_available": 692,
       "total_units_sold": 37,
       "turnover_ratio": 0.05346820809248555,
-      "last_updated": "2026-09-06 00:04:04.123646+00:00",
+      "last_updated": "2026-09-06 00:50:33.123646+00:00",
       "order_month": "2026-09"
     },
     {
@@ -808,7 +652,7 @@
       "net_available": 822,
       "total_units_sold": 26,
       "turnover_ratio": 0.028602860286028604,
-      "last_updated": "2026-09-06 22:17:17.026915+00:00",
+      "last_updated": "2026-09-06 23:03:46.026915+00:00",
       "order_month": "2026-09"
     },
     {
@@ -820,7 +664,7 @@
       "net_available": 117,
       "total_units_sold": 29,
       "turnover_ratio": 0.17261904761904762,
-      "last_updated": "2026-09-06 10:55:14.746223+00:00",
+      "last_updated": "2026-09-06 11:41:43.746223+00:00",
       "order_month": "2026-09"
     },
     {
@@ -832,7 +676,7 @@
       "net_available": 632,
       "total_units_sold": 12,
       "turnover_ratio": 0.018808777429467086,
-      "last_updated": "2026-09-06 17:17:30.741225+00:00",
+      "last_updated": "2026-09-06 18:03:59.741225+00:00",
       "order_month": "2026-09"
     },
     {
@@ -844,7 +688,7 @@
       "net_available": 664,
       "total_units_sold": 29,
       "turnover_ratio": 0.04283604135893648,
-      "last_updated": "2026-09-06 10:05:24.207480+00:00",
+      "last_updated": "2026-09-06 10:51:53.207480+00:00",
       "order_month": "2026-09"
     },
     {
@@ -856,7 +700,7 @@
       "net_available": 197,
       "total_units_sold": 26,
       "turnover_ratio": 0.09420289855072464,
-      "last_updated": "2026-09-06 21:39:43.298775+00:00",
+      "last_updated": "2026-09-06 22:26:12.298775+00:00",
       "order_month": "2026-09"
     },
     {
@@ -868,7 +712,7 @@
       "net_available": 276,
       "total_units_sold": 48,
       "turnover_ratio": 0.13114754098360656,
-      "last_updated": "2026-09-06 06:57:09.182994+00:00",
+      "last_updated": "2026-09-06 07:43:38.182994+00:00",
       "order_month": "2026-09"
     },
     {
@@ -880,7 +724,127 @@
       "net_available": 648,
       "total_units_sold": 11,
       "turnover_ratio": 0.014864864864864866,
-      "last_updated": "2026-09-06 07:23:13.686847+00:00",
+      "last_updated": "2026-09-06 08:09:42.686847+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00004",
+      "product_id": "PROD-0007",
+      "warehouse_id": "WH-02",
+      "quantity_available": 140,
+      "quantity_reserved": 25,
+      "net_available": 115,
+      "total_units_sold": 17,
+      "turnover_ratio": 0.12142857142857143,
+      "last_updated": "2026-09-07 07:59:01.298540+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00006",
+      "product_id": "PROD-0019",
+      "warehouse_id": "WH-03",
+      "quantity_available": 883,
+      "quantity_reserved": 91,
+      "net_available": 792,
+      "total_units_sold": 17,
+      "turnover_ratio": 0.01925254813137033,
+      "last_updated": "2026-09-07 02:48:09.675667+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00008",
+      "product_id": "PROD-0023",
+      "warehouse_id": "WH-03",
+      "quantity_available": 649,
+      "quantity_reserved": 7,
+      "net_available": 642,
+      "total_units_sold": 48,
+      "turnover_ratio": 0.07395993836671803,
+      "last_updated": "2026-09-07 14:00:32.104271+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00011",
+      "product_id": "PROD-0063",
+      "warehouse_id": "WH-01",
+      "quantity_available": 132,
+      "quantity_reserved": 78,
+      "net_available": 54,
+      "total_units_sold": 29,
+      "turnover_ratio": 0.2196969696969697,
+      "last_updated": "2026-09-07 15:34:40.119274+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00017",
+      "product_id": "PROD-0032",
+      "warehouse_id": "WH-02",
+      "quantity_available": 710,
+      "quantity_reserved": 44,
+      "net_available": 666,
+      "total_units_sold": 39,
+      "turnover_ratio": 0.054929577464788736,
+      "last_updated": "2026-09-07 23:48:06.749521+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00031",
+      "product_id": "PROD-0003",
+      "warehouse_id": "WH-01",
+      "quantity_available": 706,
+      "quantity_reserved": 14,
+      "net_available": 692,
+      "total_units_sold": 41,
+      "turnover_ratio": 0.05807365439093484,
+      "last_updated": "2026-09-07 20:47:19.648814+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00032",
+      "product_id": "PROD-0054",
+      "warehouse_id": "WH-04",
+      "quantity_available": 389,
+      "quantity_reserved": 15,
+      "net_available": 374,
+      "total_units_sold": 32,
+      "turnover_ratio": 0.08226221079691516,
+      "last_updated": "2026-09-07 20:53:08.040355+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00033",
+      "product_id": "PROD-0071",
+      "warehouse_id": "WH-03",
+      "quantity_available": 485,
+      "quantity_reserved": 89,
+      "net_available": 396,
+      "total_units_sold": 44,
+      "turnover_ratio": 0.09072164948453608,
+      "last_updated": "2026-09-07 22:03:42.152985+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00037",
+      "product_id": "PROD-0078",
+      "warehouse_id": "WH-02",
+      "quantity_available": 428,
+      "quantity_reserved": 13,
+      "net_available": 415,
+      "total_units_sold": 14,
+      "turnover_ratio": 0.03271028037383177,
+      "last_updated": "2026-09-07 05:16:18.214285+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00044",
+      "product_id": "PROD-0062",
+      "warehouse_id": "WH-03",
+      "quantity_available": 240,
+      "quantity_reserved": 0,
+      "net_available": 240,
+      "total_units_sold": 21,
+      "turnover_ratio": 0.0875,
+      "last_updated": "2026-09-07 03:08:56.298603+00:00",
       "order_month": "2026-09"
     },
     {
@@ -892,7 +856,7 @@
       "net_available": 254,
       "total_units_sold": 18,
       "turnover_ratio": 0.06428571428571428,
-      "last_updated": "2026-09-04 13:46:43.429507+00:00",
+      "last_updated": "2026-09-04 14:33:12.429507+00:00",
       "order_month": "2026-09"
     },
     {
@@ -904,7 +868,7 @@
       "net_available": 292,
       "total_units_sold": 41,
       "turnover_ratio": 0.13099041533546327,
-      "last_updated": "2026-09-04 22:53:20.195669+00:00",
+      "last_updated": "2026-09-04 23:39:49.195669+00:00",
       "order_month": "2026-09"
     },
     {
@@ -916,7 +880,7 @@
       "net_available": 861,
       "total_units_sold": 39,
       "turnover_ratio": 0.04225352112676056,
-      "last_updated": "2026-09-04 17:47:38.069223+00:00",
+      "last_updated": "2026-09-04 18:34:07.069223+00:00",
       "order_month": "2026-09"
     },
     {
@@ -928,7 +892,7 @@
       "net_available": 303,
       "total_units_sold": 24,
       "turnover_ratio": 0.0625,
-      "last_updated": "2026-09-04 05:47:44.834354+00:00",
+      "last_updated": "2026-09-04 06:34:13.834354+00:00",
       "order_month": "2026-09"
     },
     {
@@ -940,7 +904,7 @@
       "net_available": 624,
       "total_units_sold": 44,
       "turnover_ratio": 0.06188466947960619,
-      "last_updated": "2026-09-04 12:45:32.683622+00:00",
+      "last_updated": "2026-09-04 13:32:01.683622+00:00",
       "order_month": "2026-09"
     },
     {
@@ -952,7 +916,7 @@
       "net_available": 346,
       "total_units_sold": 19,
       "turnover_ratio": 0.044186046511627906,
-      "last_updated": "2026-09-04 02:06:59.665899+00:00",
+      "last_updated": "2026-09-04 02:53:28.665899+00:00",
       "order_month": "2026-09"
     },
     {
@@ -964,19 +928,7 @@
       "net_available": 914,
       "total_units_sold": 19,
       "turnover_ratio": 0.020474137931034482,
-      "last_updated": "2026-09-04 21:49:28.946219+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00049",
-      "product_id": "PROD-0059",
-      "warehouse_id": "WH-03",
-      "quantity_available": 270,
-      "quantity_reserved": 59,
-      "net_available": 211,
-      "total_units_sold": 43,
-      "turnover_ratio": 0.15925925925925927,
-      "last_updated": "2026-09-04 23:27:19.788045+00:00",
+      "last_updated": "2026-09-04 22:35:57.946219+00:00",
       "order_month": "2026-09"
     },
     {
@@ -988,7 +940,7 @@
       "net_available": 801,
       "total_units_sold": 41,
       "turnover_ratio": 0.04617117117117117,
-      "last_updated": "2026-09-05 20:58:46.213872+00:00",
+      "last_updated": "2026-09-05 21:45:15.213872+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1000,7 +952,7 @@
       "net_available": 4,
       "total_units_sold": 21,
       "turnover_ratio": 5.25,
-      "last_updated": "2026-09-05 08:07:57.767288+00:00",
+      "last_updated": "2026-09-05 08:54:26.767288+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1012,7 +964,7 @@
       "net_available": 708,
       "total_units_sold": 19,
       "turnover_ratio": 0.024516129032258065,
-      "last_updated": "2026-09-05 09:18:08.687600+00:00",
+      "last_updated": "2026-09-05 10:04:37.687600+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1024,7 +976,7 @@
       "net_available": 268,
       "total_units_sold": 24,
       "turnover_ratio": 0.07868852459016394,
-      "last_updated": "2026-09-05 13:16:38.217301+00:00",
+      "last_updated": "2026-09-05 14:03:07.217301+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1036,7 +988,7 @@
       "net_available": 543,
       "total_units_sold": 43,
       "turnover_ratio": 0.07049180327868852,
-      "last_updated": "2026-09-05 01:40:53.099442+00:00",
+      "last_updated": "2026-09-05 02:27:22.099442+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1048,79 +1000,19 @@
       "net_available": 749,
       "total_units_sold": 29,
       "turnover_ratio": 0.03861517976031957,
-      "last_updated": "2026-09-05 03:47:30.915476+00:00",
+      "last_updated": "2026-09-05 04:33:59.915476+00:00",
       "order_month": "2026-09"
     },
     {
-      "inventory_id": "INV-00005",
-      "product_id": "PROD-0044",
-      "warehouse_id": "WH-04",
-      "quantity_available": 583,
-      "quantity_reserved": 58,
-      "net_available": 525,
-      "total_units_sold": 26,
-      "turnover_ratio": 0.044596912521440824,
-      "last_updated": "2026-09-02 04:15:00.886494+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00014",
-      "product_id": "PROD-0069",
-      "warehouse_id": "WH-02",
-      "quantity_available": 748,
-      "quantity_reserved": 47,
-      "net_available": 701,
-      "total_units_sold": 36,
-      "turnover_ratio": 0.0481283422459893,
-      "last_updated": "2026-09-02 03:08:12.460942+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00025",
-      "product_id": "PROD-0003",
-      "warehouse_id": "WH-02",
-      "quantity_available": 229,
-      "quantity_reserved": 93,
-      "net_available": 136,
-      "total_units_sold": 41,
-      "turnover_ratio": 0.17903930131004367,
-      "last_updated": "2026-09-02 22:51:00.665113+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00039",
-      "product_id": "PROD-0015",
-      "warehouse_id": "WH-01",
-      "quantity_available": 509,
-      "quantity_reserved": 0,
-      "net_available": 509,
-      "total_units_sold": 38,
-      "turnover_ratio": 0.07465618860510806,
-      "last_updated": "2026-09-02 02:56:54.775582+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00040",
-      "product_id": "PROD-0078",
-      "warehouse_id": "WH-02",
-      "quantity_available": 796,
-      "quantity_reserved": 33,
-      "net_available": 763,
-      "total_units_sold": 14,
-      "turnover_ratio": 0.017587939698492462,
-      "last_updated": "2026-09-02 08:24:43.867895+00:00",
-      "order_month": "2026-09"
-    },
-    {
-      "inventory_id": "INV-00046",
-      "product_id": "PROD-0074",
-      "warehouse_id": "WH-04",
-      "quantity_available": 152,
-      "quantity_reserved": 11,
-      "net_available": 141,
-      "total_units_sold": 34,
-      "turnover_ratio": 0.2236842105263158,
-      "last_updated": "2026-09-02 13:27:21.402837+00:00",
+      "inventory_id": "INV-00049",
+      "product_id": "PROD-0059",
+      "warehouse_id": "WH-03",
+      "quantity_available": 270,
+      "quantity_reserved": 59,
+      "net_available": 211,
+      "total_units_sold": 43,
+      "turnover_ratio": 0.15925925925925927,
+      "last_updated": "2026-09-05 00:13:48.788045+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1132,7 +1024,19 @@
       "net_available": 359,
       "total_units_sold": 10,
       "turnover_ratio": 0.024213075060532687,
-      "last_updated": "2026-09-08 17:41:41.810261+00:00",
+      "last_updated": "2026-09-08 18:28:10.810261+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00018",
+      "product_id": "PROD-0040",
+      "warehouse_id": "WH-02",
+      "quantity_available": 105,
+      "quantity_reserved": 49,
+      "net_available": 56,
+      "total_units_sold": 37,
+      "turnover_ratio": 0.3523809523809524,
+      "last_updated": "2026-09-08 00:33:22.338228+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1144,7 +1048,19 @@
       "net_available": 158,
       "total_units_sold": 23,
       "turnover_ratio": 0.1329479768786127,
-      "last_updated": "2026-09-08 15:44:37.355771+00:00",
+      "last_updated": "2026-09-08 16:31:06.355771+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00038",
+      "product_id": "PROD-0066",
+      "warehouse_id": "WH-05",
+      "quantity_available": 120,
+      "quantity_reserved": 36,
+      "net_available": 84,
+      "total_units_sold": 11,
+      "turnover_ratio": 0.09166666666666666,
+      "last_updated": "2026-09-08 00:15:09.248923+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1156,7 +1072,7 @@
       "net_available": 159,
       "total_units_sold": 32,
       "turnover_ratio": 0.1951219512195122,
-      "last_updated": "2026-09-08 07:38:00.918942+00:00",
+      "last_updated": "2026-09-08 08:24:29.918942+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1168,7 +1084,91 @@
       "net_available": 906,
       "total_units_sold": 44,
       "turnover_ratio": 0.04721030042918455,
-      "last_updated": "2026-09-08 20:29:06.198204+00:00",
+      "last_updated": "2026-09-08 21:15:35.198204+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00048",
+      "product_id": "PROD-0013",
+      "warehouse_id": "WH-03",
+      "quantity_available": 659,
+      "quantity_reserved": 29,
+      "net_available": 630,
+      "total_units_sold": 26,
+      "turnover_ratio": 0.03945371775417299,
+      "last_updated": "2026-09-08 00:17:07.919881+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00005",
+      "product_id": "PROD-0044",
+      "warehouse_id": "WH-04",
+      "quantity_available": 583,
+      "quantity_reserved": 58,
+      "net_available": 525,
+      "total_units_sold": 26,
+      "turnover_ratio": 0.044596912521440824,
+      "last_updated": "2026-09-02 05:01:29.886494+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00014",
+      "product_id": "PROD-0069",
+      "warehouse_id": "WH-02",
+      "quantity_available": 748,
+      "quantity_reserved": 47,
+      "net_available": 701,
+      "total_units_sold": 36,
+      "turnover_ratio": 0.0481283422459893,
+      "last_updated": "2026-09-02 03:54:41.460942+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00025",
+      "product_id": "PROD-0003",
+      "warehouse_id": "WH-02",
+      "quantity_available": 229,
+      "quantity_reserved": 93,
+      "net_available": 136,
+      "total_units_sold": 41,
+      "turnover_ratio": 0.17903930131004367,
+      "last_updated": "2026-09-02 23:37:29.665113+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00039",
+      "product_id": "PROD-0015",
+      "warehouse_id": "WH-01",
+      "quantity_available": 509,
+      "quantity_reserved": 0,
+      "net_available": 509,
+      "total_units_sold": 38,
+      "turnover_ratio": 0.07465618860510806,
+      "last_updated": "2026-09-02 03:43:23.775582+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00040",
+      "product_id": "PROD-0078",
+      "warehouse_id": "WH-02",
+      "quantity_available": 796,
+      "quantity_reserved": 33,
+      "net_available": 763,
+      "total_units_sold": 14,
+      "turnover_ratio": 0.017587939698492462,
+      "last_updated": "2026-09-02 09:11:12.867895+00:00",
+      "order_month": "2026-09"
+    },
+    {
+      "inventory_id": "INV-00046",
+      "product_id": "PROD-0074",
+      "warehouse_id": "WH-04",
+      "quantity_available": 152,
+      "quantity_reserved": 11,
+      "net_available": 141,
+      "total_units_sold": 34,
+      "turnover_ratio": 0.2236842105263158,
+      "last_updated": "2026-09-02 14:13:50.402837+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1180,7 +1180,7 @@
       "net_available": 887,
       "total_units_sold": 30,
       "turnover_ratio": 0.031055900621118012,
-      "last_updated": "2026-09-03 04:36:39.955618+00:00",
+      "last_updated": "2026-09-03 05:23:08.955618+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1192,7 +1192,7 @@
       "net_available": 253,
       "total_units_sold": 32,
       "turnover_ratio": 0.10491803278688525,
-      "last_updated": "2026-09-03 12:09:21.567376+00:00",
+      "last_updated": "2026-09-03 12:55:50.567376+00:00",
       "order_month": "2026-09"
     }
   ]
