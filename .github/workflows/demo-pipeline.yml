@@ -17,6 +17,9 @@ concurrency:
   group: demo-pipeline
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   run-pipeline:
     name: Run Bronze → Silver → Gold + DQ
@@ -32,6 +35,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -96,7 +101,11 @@ jobs:
         run: python transformations/gold_transformations.py
 
       - name: Build dashboard snapshot
-        run: python serving/export_public_snapshot.py
+        env:
+          SNAPSHOT_OUTPUT: public/dashboard_snapshot.json
+        run: |
+          python serving/export_public_snapshot.py
+          cp public/dashboard_snapshot.json ci-output-dashboard_snapshot.json
 
       - name: Write pipeline metadata
         run: |
@@ -123,8 +132,22 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lakehouse-demo-run-${{ github.run_number }}
-          path: ci-output/
+          path: |
+            ci-output/
+            ci-output-dashboard_snapshot.json
           retention-days: 7
+
+      - name: Publish dashboard snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/dashboard_snapshot.json
+          if git diff --cached --quiet; then
+            echo "Dashboard snapshot unchanged"
+          else
+            git commit -m "chore: publish dashboard snapshot [skip ci]"
+            git push origin HEAD:main
+          fi
 
       - name: Cleanup MinIO
         if: always()
