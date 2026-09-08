@@ -67,10 +67,12 @@ jobs:
 
       - name: Create lakehouse buckets
         run: |
-          docker run --rm --network host minio/mc:latest alias set ci http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
-          docker run --rm --network host minio/mc:latest mb --ignore-existing ci/bronze
-          docker run --rm --network host minio/mc:latest mb --ignore-existing ci/silver
-          docker run --rm --network host minio/mc:latest mb --ignore-existing ci/gold
+          MC_CONFIG_DIR="$RUNNER_TEMP/mc-config"
+          mkdir -p "$MC_CONFIG_DIR"
+          docker run --rm --network host -v "$MC_CONFIG_DIR:/root/.mc" minio/mc:latest alias set ci http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
+          docker run --rm --network host -v "$MC_CONFIG_DIR:/root/.mc" minio/mc:latest mb --ignore-existing ci/bronze
+          docker run --rm --network host -v "$MC_CONFIG_DIR:/root/.mc" minio/mc:latest mb --ignore-existing ci/silver
+          docker run --rm --network host -v "$MC_CONFIG_DIR:/root/.mc" minio/mc:latest mb --ignore-existing ci/gold
 
       - name: Install dependencies
         run: pip install -r requirements.txt
