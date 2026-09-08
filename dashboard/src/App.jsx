@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
+import { BarChart, Bar, Cell, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 // ─── Fallback snapshot (used only while the live pipeline snapshot is loading) ──
 let DATA = {
@@ -220,7 +220,7 @@ const LAYER_BG = { source: "#1F2937", bronze: "#451A03", silver: "#1E1B4B", gold
 // ─── Sub-components ───────────────────────────────────────────────────────────
 function StatCard({ label, value, sub, color = "#3B82F6" }) {
   return (
-    <div style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 4 }}>
+    <div className="stat-card" style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 4 }}>
       <span style={{ fontSize: 11, color: "#6B7280", letterSpacing: "0.05em" }}>{label}</span>
       <span style={{ fontSize: 28, fontWeight: 600, fontFamily: "monospace", color }}>{value}</span>
       {sub && <span style={{ fontSize: 11, color: "#9CA3AF" }}>{sub}</span>}
@@ -231,7 +231,7 @@ function StatCard({ label, value, sub, color = "#3B82F6" }) {
 function Badge({ status }) {
   const map = { success: ["#10B981", "#022C22", "success"], failed: ["#EF4444", "#1F0606", "failed"], running: ["#3B82F6", "#0B1437", "running"] };
   const [color, bg, text] = map[status] || map.success;
-  return <span style={{ background: bg, color, border: `1px solid ${color}`, borderRadius: 4, padding: "2px 8px", fontSize: 11, fontFamily: "monospace" }}>{text}</span>;
+  return <span className="status-badge" style={{ background: bg, color, border: `1px solid ${color}`, borderRadius: 4, padding: "2px 8px", fontSize: 11, fontFamily: "monospace" }}>{text}</span>;
 }
 
 // ─── Tab 1: Business Overview ─────────────────────────────────────────────────
@@ -240,7 +240,7 @@ function BusinessTab() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       {/* Hero */}
-      <div style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", border: "1px solid #1E3A5F", borderRadius: 12, padding: "32px 36px", display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+      <div className="revenue-hero" style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", border: "1px solid #1E3A5F", borderRadius: 12, padding: "32px 36px", display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
         <div>
           <div style={{ fontSize: 12, color: "#60A5FA", marginBottom: 8, letterSpacing: "0.1em" }}>TOTAL REVENUE</div>
           <div style={{ fontSize: 52, fontWeight: 700, fontFamily: "monospace", color: "#FFFFFF", lineHeight: 1 }}>{fmtCurrency(b.total_revenue)}</div>
@@ -261,7 +261,7 @@ function BusinessTab() {
           {b.revenue_by_channel.map(ch => {
             const pct = ((ch.revenue / b.total_revenue) * 100).toFixed(1);
             return (
-              <div key={ch.channel} style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: 16 }}>
+              <div className="channel-card" key={ch.channel} style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: 16 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
                   <span style={{ color: "#E5E7EB", fontWeight: 500 }}>{ch.channel}</span>
                   <span style={{ fontFamily: "monospace", color: "#F59E0B" }}>{pct}%</span>
@@ -280,7 +280,7 @@ function BusinessTab() {
       {/* Revenue trend */}
       <div>
         <h3 style={{ fontSize: 13, color: "#9CA3AF", margin: "0 0 12px 0", fontWeight: 500 }}>Revenue trend (last 4 months)</h3>
-        <div style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: 16 }}>
+        <div className="chart-card" style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: 16 }}>
           <ResponsiveContainer width="100%" height={140}>
             <LineChart data={b.revenue_trend}>
               <XAxis dataKey="month" tick={{ fill: "#6B7280", fontSize: 11 }} axisLine={false} tickLine={false} />
@@ -296,7 +296,7 @@ function BusinessTab() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
         <div>
           <h3 style={{ fontSize: 13, color: "#9CA3AF", margin: "0 0 12px 0", fontWeight: 500 }}>Top products by revenue</h3>
-          <div style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, overflow: "hidden" }}>
+          <div className="list-card" style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, overflow: "hidden" }}>
             {b.top_products.map((p, i) => (
               <div key={p.product_id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", borderBottom: i < b.top_products.length - 1 ? "1px solid #1F2937" : "none" }}>
                 <div>
@@ -326,6 +326,7 @@ function BusinessTab() {
 function EngineeringTab() {
   const { engineering: e } = DATA;
   const successRate = ((e.successful_runs / (e.successful_runs + e.failed_runs)) * 100).toFixed(1);
+  const runColors = ["#D97706", "#818CF8", "#F59E0B", "#53D7D1"];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
@@ -333,8 +334,8 @@ function EngineeringTab() {
       <div>
         <h3 style={{ fontSize: 13, color: "#9CA3AF", margin: "0 0 12px 0", fontWeight: 500 }}>Last pipeline run — {DATA.last_updated.slice(0, 10)}</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {e.pipeline_runs.map((run, i) => (
-            <div key={run.dag} style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: "12px 16px", display: "flex", alignItems: "center", gap: 16 }}>
+          {e.pipeline_runs.map((run) => (
+            <div className="pipeline-row" key={run.dag} style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: "12px 16px", display: "flex", alignItems: "center", gap: 16 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: run.status === "success" ? "#10B981" : "#EF4444", flexShrink: 0 }} />
               <div style={{ flex: 1 }}>
                 <div style={{ fontFamily: "monospace", fontSize: 13, color: "#E5E7EB" }}>{run.dag}</div>
@@ -354,11 +355,28 @@ function EngineeringTab() {
         <StatCard label="DQ score" value={`${e.dq.quality_score}%`} color="#10B981" sub="all checks passing" />
       </div>
 
+      {/* Run duration */}
+      <div>
+        <h3 style={{ fontSize: 13, color: "#9CA3AF", margin: "0 0 12px 0", fontWeight: 500 }}>Run duration by stage</h3>
+        <div className="chart-card engineering-chart" style={{ background: "#111827", border: "1px solid #1F2937", borderRadius: 8, padding: 16 }}>
+          <ResponsiveContainer width="100%" height={180}>
+            <BarChart data={e.pipeline_runs} layout="vertical" margin={{ top: 4, right: 12, left: 12, bottom: 4 }}>
+              <XAxis type="number" hide />
+              <YAxis dataKey="dag" type="category" width={150} tick={{ fill: "#9CA3AF", fontSize: 10, fontFamily: "monospace" }} axisLine={false} tickLine={false} />
+              <Tooltip contentStyle={{ background: "#172231", border: "1px solid #334155", borderRadius: 6, color: "#E5E7EB", fontSize: 12 }} formatter={(value) => [`${value} min`, "Duration"]} />
+              <Bar dataKey="duration_min" radius={[0, 4, 4, 0]} barSize={18}>
+                {e.pipeline_runs.map((run, index) => <Cell key={run.dag} fill={runColors[index % runColors.length]} />)}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
       {/* Records across layers */}
       <div>
         <h3 style={{ fontSize: 13, color: "#9CA3AF", margin: "0 0 12px 0", fontWeight: 500 }}>Records by layer</h3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
-          <div style={{ background: "#451A03", border: "1px solid #78350F", borderRadius: 8, padding: 16 }}>
+          <div className="layer-card layer-bronze" style={{ background: "#451A03", border: "1px solid #78350F", borderRadius: 8, padding: 16 }}>
             <div style={{ fontSize: 11, color: "#D97706", marginBottom: 8, fontWeight: 500 }}>BRONZE</div>
             {[["shopify_orders", e.records.bronze_shopify], ["amazon_orders", e.records.bronze_amazon], ["inventory_feed", e.records.bronze_inventory]].map(([k, v]) => (
               <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderBottom: "1px solid #78350F22" }}>
@@ -367,7 +385,7 @@ function EngineeringTab() {
               </div>
             ))}
           </div>
-          <div style={{ background: "#1E1B4B", border: "1px solid #3730A3", borderRadius: 8, padding: 16 }}>
+          <div className="layer-card layer-silver" style={{ background: "#1E1B4B", border: "1px solid #3730A3", borderRadius: 8, padding: 16 }}>
             <div style={{ fontSize: 11, color: "#818CF8", marginBottom: 8, fontWeight: 500 }}>SILVER</div>
             {[["orders", e.records.silver_orders], ["customers", e.records.silver_customers], ["products", e.records.silver_products], ["inventory", e.records.silver_inventory]].map(([k, v]) => (
               <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderBottom: "1px solid #3730A322" }}>
@@ -376,7 +394,7 @@ function EngineeringTab() {
               </div>
             ))}
           </div>
-          <div style={{ background: "#1C1003", border: "1px solid #92400E", borderRadius: 8, padding: 16 }}>
+          <div className="layer-card layer-gold" style={{ background: "#1C1003", border: "1px solid #92400E", borderRadius: 8, padding: 16 }}>
             <div style={{ fontSize: 11, color: "#F59E0B", marginBottom: 8, fontWeight: 500 }}>GOLD</div>
             {[["revenue_mart", e.records.gold_revenue_mart], ["channel_perf", e.records.gold_channel_mart], ["customer_360", e.records.gold_customer_360], ["inv_turnover", e.records.gold_inventory_mart]].map(([k, v]) => (
               <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderBottom: "1px solid #92400E22" }}>
@@ -432,14 +450,24 @@ function LineageTab() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <div style={{ fontSize: 12, color: "#6B7280" }}>
+      <div className="lineage-intro" style={{ fontSize: 12, color: "#6B7280" }}>
         Click any table to trace its upstream sources and downstream consumers.
         {selected && <span style={{ color: "#3B82F6", marginLeft: 8, cursor: "pointer" }} onClick={() => setSelected(null)}>Clear selection ×</span>}
       </div>
 
+      <div className="lineage-summary">
+        <span><strong>{lineage.nodes.length}</strong> tables</span>
+        <span><strong>{lineage.edges.length}</strong> dependencies</span>
+        <div className="lineage-legend">
+          {Object.entries(LAYER_COLOR).map(([layer, color]) => (
+            <span key={layer}><i style={{ background: color }} />{layer}</span>
+          ))}
+        </div>
+      </div>
+
       {/* SVG graph */}
-      <div style={{ background: "#0D1117", border: "1px solid #1F2937", borderRadius: 12, padding: 16, overflowX: "auto" }}>
-        <svg width="680" height="420" viewBox="0 0 680 420" style={{ display: "block" }}>
+      <div className="lineage-graph" style={{ background: "#0D1117", border: "1px solid #1F2937", borderRadius: 12, padding: 16, overflowX: "auto" }}>
+        <svg width="760" height="420" viewBox="0 0 760 420" style={{ display: "block" }}>
           {/* Layer labels */}
           {[["SOURCE", 60, "#6B7280"], ["BRONZE", 220, "#D97706"], ["SILVER", 400, "#818CF8"], ["GOLD", 580, "#F59E0B"]].map(([label, x, color]) => (
             <text key={label} x={x} y={20} textAnchor="middle" fill={color} fontSize={10} fontFamily="monospace" letterSpacing="0.08em">{label}</text>
@@ -486,7 +514,7 @@ function LineageTab() {
 
       {/* Selected node detail */}
       {selected && (
-        <div style={{ background: "#111827", border: "1px solid #3B82F6", borderRadius: 8, padding: 16 }}>
+        <div className="lineage-detail" style={{ background: "#111827", border: "1px solid #3B82F6", borderRadius: 8, padding: 16 }}>
           <div style={{ fontFamily: "monospace", color: "#3B82F6", fontSize: 13, marginBottom: 12 }}>{nodeById[selected]?.label}</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             <div>
@@ -539,10 +567,13 @@ export default function App() {
   };
 
   useEffect(() => {
-    refreshData();
+    const refreshTimeout = setTimeout(() => refreshData(), 0);
 
     const t = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(t);
+    return () => {
+      clearTimeout(refreshTimeout);
+      clearInterval(t);
+    };
   }, []);
 
   const tabs = [
@@ -552,9 +583,9 @@ export default function App() {
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0A0E1A", color: "#E5E7EB", fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div className="dashboard-shell" style={{ minHeight: "100vh", background: "#0A0E1A", color: "#E5E7EB", fontFamily: "'Inter', system-ui, sans-serif" }}>
       {/* Header */}
-      <div style={{ borderBottom: "1px solid #1F2937", padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="dashboard-header" style={{ borderBottom: "1px solid #1F2937", padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
           <div style={{ fontSize: 18, fontWeight: 600, color: "#FFFFFF", letterSpacing: "-0.01em" }}>Unified Commerce Lakehouse</div>
           <div style={{ fontSize: 12, color: "#6B7280", marginTop: 2 }}>
@@ -570,6 +601,7 @@ export default function App() {
             <button
               onClick={refreshData}
               disabled={loading}
+              className="refresh-button"
               style={{
                 background: "#111827",
                 border: "1px solid #374151",
@@ -591,9 +623,10 @@ export default function App() {
       </div>
 
       {/* Tab nav */}
-      <div style={{ borderBottom: "1px solid #1F2937", padding: "0 32px", display: "flex", gap: 0 }}>
+      <div className="dashboard-tabs" style={{ borderBottom: "1px solid #1F2937", padding: "0 32px", display: "flex", gap: 0 }}>
         {tabs.map(t => (
           <button key={t.id} onClick={() => setTab(t.id)}
+            className={`dashboard-tab ${tab === t.id ? "is-active" : ""}`}
             style={{ padding: "12px 20px", background: "none", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 500,
               color: tab === t.id ? "#3B82F6" : "#6B7280",
               borderBottom: tab === t.id ? "2px solid #3B82F6" : "2px solid transparent",
@@ -611,14 +644,14 @@ export default function App() {
           </div>
         </div>
       )}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "28px 32px" }}>
+      <div className="dashboard-content" style={{ maxWidth: 900, margin: "0 auto", padding: "28px 32px" }}>
         {tab === "business" && <BusinessTab />}
         {tab === "engineering" && <EngineeringTab />}
         {tab === "lineage" && <LineageTab />}
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid #1F2937", padding: "12px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="dashboard-footer" style={{ borderTop: "1px solid #1F2937", padding: "12px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ fontSize: 11, color: "#4B5563" }}>
           Live snapshot: {DATA.last_updated.replace("T", " ").replace("Z", " UTC")} · Run {DATA.pipeline_run_id}
         </span>
