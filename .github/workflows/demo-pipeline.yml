@@ -9,6 +9,7 @@ on:
       - "transformations/**"
       - "quality/**"
       - "scripts/**"
+      - "serving/**"
       - "requirements.txt"
       - ".github/workflows/demo-pipeline.yml"
 
@@ -47,10 +48,7 @@ jobs:
 
       - name: Start MinIO
         run: |
-          docker run -d \
-            --name lakehouse-minio-ci \
-            -p 9000:9000 \
-            -p 9001:9001 \
+          docker run -d --name lakehouse-minio-ci -p 9000:9000 -p 9001:9001 \
             -e MINIO_ROOT_USER="$MINIO_ACCESS_KEY" \
             -e MINIO_ROOT_PASSWORD="$MINIO_SECRET_KEY" \
             minio/minio:latest server /data --console-address ":9001"
@@ -68,19 +66,10 @@ jobs:
 
       - name: Create lakehouse buckets
         run: |
-          docker run --rm --network host minio/mc:latest \
-            alias set ci http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
+          docker run --rm --network host minio/mc:latest alias set ci http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
           docker run --rm --network host minio/mc:latest mb --ignore-existing ci/bronze
           docker run --rm --network host minio/mc:latest mb --ignore-existing ci/silver
           docker run --rm --network host minio/mc:latest mb --ignore-existing ci/gold
-
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -103,35 +92,8 @@ jobs:
       - name: Run Gold transformations
         run: python transformations/gold_transformations.py
 
-      - name: Export Gold tables as CI artifacts
-        run: |
-          mkdir -p ci-output/gold
-          python - <<'PY'
-          import os
-          from deltalake import DeltaTable
-
-          storage = {
-              "endpoint_url": os.environ["MINIO_ENDPOINT"],
-              "access_key_id": os.environ["MINIO_ACCESS_KEY"],
-              "secret_access_key": os.environ["MINIO_SECRET_KEY"],
-              "allow_http": "true",
-              "aws_region": "us-east-1",
-          }
-
-          tables = [
-              "revenue_mart",
-              "channel_performance_mart",
-              "customer_360_mart",
-              "inventory_turnover_mart",
-          ]
-
-          for table in tables:
-              dt = DeltaTable(f"s3://gold/{table}", storage_options=storage)
-              df = dt.to_pandas()
-              path = f"ci-output/gold/{table}.csv"
-              df.to_csv(path, index=False)
-              print(f"Exported {table}: {len(df)} rows")
-          PY
+      - name: Build dashboard snapshot
+        run: python serving/export_public_snapshot.py
 
       - name: Write pipeline metadata
         run: |
