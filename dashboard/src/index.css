@@ -212,6 +212,58 @@ a:focus-visible {
   transform: translateY(-1px);
 }
 
+.refresh-button:disabled,
+.run-pipeline-button:disabled {
+  cursor: wait !important;
+  opacity: 0.6;
+}
+
+.run-pipeline-button {
+  border: 1px solid rgba(244, 184, 96, 0.55);
+  border-radius: 5px;
+  padding: 4px 10px;
+  color: #f8d49a;
+  background: rgba(244, 184, 96, 0.12);
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.run-pipeline-button:hover:not(:disabled) {
+  background: rgba(244, 184, 96, 0.22);
+  transform: translateY(-1px);
+}
+
+.pipeline-message {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 64px, 1056px);
+  margin: 14px auto 0;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(17, 25, 37, 0.9);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+}
+
+.pipeline-message-running {
+  border-color: rgba(244, 184, 96, 0.4);
+  color: #f8d49a;
+}
+
+.pipeline-message-completed {
+  border-color: rgba(83, 215, 209, 0.4);
+  color: var(--cyan);
+}
+
+.pipeline-message-error {
+  border-color: rgba(239, 68, 68, 0.45);
+  color: #fca5a5;
+}
+
 .status-badge {
   border-radius: 999px !important;
   font-weight: 600;
@@ -381,6 +433,11 @@ a:focus-visible {
 
   .dashboard-header > div:last-child > div:first-child {
     justify-content: flex-start !important;
+    flex-wrap: wrap;
+  }
+
+  .pipeline-message {
+    width: calc(100% - 32px);
   }
 
   .dashboard-tabs {

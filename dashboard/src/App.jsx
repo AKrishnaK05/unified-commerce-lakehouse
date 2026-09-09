@@ -224,9 +224,18 @@ function normalizeSnapshot(snapshot) {
 }
 
 async function fetchLiveSnapshot() {
-  const response = await fetch(`${SNAPSHOT_URL}?t=${Date.now()}`, {
-    cache: "no-store",
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+
+  let response;
+  try {
+    response = await fetch(`${SNAPSHOT_URL}?t=${Date.now()}`, {
+      cache: "no-store",
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!response.ok) {
     throw new Error(`Snapshot request failed (${response.status})`);
@@ -235,6 +244,8 @@ async function fetchLiveSnapshot() {
   const snapshot = await response.json();
   return normalizeSnapshot(snapshot);
 }
+
+const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const fmt = (n) => n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
@@ -573,6 +584,8 @@ export default function App() {
   const [time, setTime] = useState(new Date());
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
+  const [pipelineState, setPipelineState] = useState("idle");
+  const [pipelineMessage, setPipelineMessage] = useState("");
   const [, setDataVersion] = useState(0);
 
   const refreshData = async () => {
@@ -588,6 +601,66 @@ export default function App() {
       setLoadError("Live snapshot unavailable — showing the last fallback snapshot.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const runPipeline = async () => {
+    if (loading || pipelineState === "running") return;
+
+    const previousRunId = DATA.pipeline_run_id;
+    const previousUpdatedAt = DATA.last_updated;
+    setPipelineState("running");
+    setPipelineMessage("Pipeline triggered. Waiting for a new snapshot...");
+    setLoadError("");
+
+    try {
+      const response = await fetch("/api/run-pipeline", { method: "POST" });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result.details || result.error || `Pipeline trigger failed (${response.status})`);
+      }
+
+      const runId = result.runId;
+      for (let attempt = 0; attempt < 120; attempt += 1) {
+        await wait(5000);
+        let statusResult = null;
+
+        if (runId) {
+          const statusResponse = await fetch(`/api/run-pipeline?run_id=${encodeURIComponent(runId)}`);
+          statusResult = await statusResponse.json().catch(() => ({}));
+          if (!statusResponse.ok) {
+            throw new Error(statusResult.details || statusResult.error || "Unable to read GitHub Actions status");
+          }
+
+          if (statusResult.status === "queued") {
+            setPipelineMessage(`Pipeline queued in GitHub Actions (run ${runId}).`);
+          } else if (statusResult.status === "in_progress") {
+            setPipelineMessage(`Pipeline running in GitHub Actions (run ${runId})...`);
+          } else if (statusResult.status === "completed" && statusResult.conclusion !== "success") {
+            throw new Error(`GitHub Actions pipeline ${statusResult.conclusion || "failed"}.`);
+          }
+        } else {
+          setPipelineMessage("Pipeline triggered. Waiting for GitHub Actions status...");
+        }
+
+        const liveData = await fetchLiveSnapshot();
+        const hasNewSnapshot =
+          liveData.pipeline_run_id !== previousRunId || liveData.last_updated !== previousUpdatedAt;
+
+        if (hasNewSnapshot && (!runId || (statusResult?.status === "completed" && statusResult?.conclusion === "success"))) {
+          DATA = liveData;
+          setDataVersion((version) => version + 1);
+          setPipelineState("completed");
+          setPipelineMessage("Pipeline completed. New metrics loaded.");
+          return;
+        }
+      }
+
+      throw new Error("The pipeline was triggered, but no new snapshot appeared within 10 minutes.");
+    } catch (error) {
+      console.error("Unable to run pipeline:", error);
+      setPipelineState("error");
+      setPipelineMessage(error.message || "Pipeline failed to start.");
     }
   };
 
@@ -640,12 +713,26 @@ export default function App() {
             >
               {loading ? "loading…" : "refresh"}
             </button>
+            <button
+              onClick={runPipeline}
+              disabled={loading || pipelineState === "running"}
+              className="run-pipeline-button"
+              type="button"
+            >
+              {pipelineState === "running" ? "pipeline running…" : "run pipeline"}
+            </button>
           </div>
           <div style={{ fontSize: 11, color: "#4B5563", fontFamily: "monospace", marginTop: 2 }}>
             {time.toUTCString().replace(" GMT", " UTC")}
           </div>
         </div>
       </div>
+
+      {pipelineMessage && (
+        <div className={`pipeline-message pipeline-message-${pipelineState}`} role="status">
+          {pipelineMessage}
+        </div>
+      )}
 
       {/* Tab nav */}
       <div className="dashboard-tabs" style={{ borderBottom: "1px solid #1F2937", padding: "0 32px", display: "flex", gap: 0 }}>
