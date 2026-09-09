@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-09T06:42:58.468195+00:00",
-  "pipeline_run_id": "34320077182",
+  "last_updated": "2026-09-09T06:51:08.360792+00:00",
+  "pipeline_run_id": "34320698081",
   "metrics": {
     "total_revenue": 199352.38,
     "total_orders": 800,
@@ -466,7 +466,7 @@
     {
       "customer_id": "CUST-00114",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 3114.4900000000002,
       "total_orders": 11,
       "total_units_purchased": 27,
@@ -479,7 +479,7 @@
     {
       "customer_id": "CUST-00013",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2907.4,
       "total_orders": 9,
       "total_units_purchased": 28,
@@ -492,7 +492,7 @@
     {
       "customer_id": "CUST-00085",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2876.21,
       "total_orders": 9,
       "total_units_purchased": 22,
@@ -505,7 +505,7 @@
     {
       "customer_id": "CUST-00135",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2839.01,
       "total_orders": 9,
       "total_units_purchased": 24,
@@ -518,7 +518,7 @@
     {
       "customer_id": "CUST-00026",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2648.54,
       "total_orders": 9,
       "total_units_purchased": 28,
@@ -531,7 +531,7 @@
     {
       "customer_id": "CUST-00108",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2502.13,
       "total_orders": 8,
       "total_units_purchased": 20,
@@ -544,7 +544,7 @@
     {
       "customer_id": "CUST-00077",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2495.95,
       "total_orders": 11,
       "total_units_purchased": 37,
@@ -557,7 +557,7 @@
     {
       "customer_id": "CUST-00118",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2474.2299999999996,
       "total_orders": 8,
       "total_units_purchased": 21,
@@ -570,7 +570,7 @@
     {
       "customer_id": "CUST-00090",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2463.3500000000004,
       "total_orders": 11,
       "total_units_purchased": 27,
@@ -583,7 +583,7 @@
     {
       "customer_id": "CUST-00072",
       "source": "shopify",
-      "_created_at": "2026-09-09 06:41:58.228288+00:00",
+      "_created_at": "2026-09-09 06:50:09.278197+00:00",
       "lifetime_revenue": 2351.58,
       "total_orders": 10,
       "total_units_purchased": 27,
@@ -604,7 +604,7 @@
       "net_available": 886,
       "total_units_sold": 25,
       "turnover_ratio": 0.027472527472527472,
-      "last_updated": "2026-09-07 03:51:38.049025+00:00",
+      "last_updated": "2026-09-07 03:59:45.049025+00:00",
       "order_month": "2026-09"
     },
     {
@@ -616,7 +616,7 @@
       "net_available": 115,
       "total_units_sold": 17,
       "turnover_ratio": 0.12142857142857143,
-      "last_updated": "2026-09-07 16:58:20.298540+00:00",
+      "last_updated": "2026-09-07 17:06:27.298540+00:00",
       "order_month": "2026-09"
     },
     {
@@ -628,7 +628,7 @@
       "net_available": 792,
       "total_units_sold": 17,
       "turnover_ratio": 0.01925254813137033,
-      "last_updated": "2026-09-07 11:47:28.675667+00:00",
+      "last_updated": "2026-09-07 11:55:35.675667+00:00",
       "order_month": "2026-09"
     },
     {
@@ -640,7 +640,7 @@
       "net_available": 457,
       "total_units_sold": 23,
       "turnover_ratio": 0.04609218436873747,
-      "last_updated": "2026-09-07 05:09:32.822444+00:00",
+      "last_updated": "2026-09-07 05:17:39.822444+00:00",
       "order_month": "2026-09"
     },
     {
@@ -652,7 +652,7 @@
       "net_available": 642,
       "total_units_sold": 48,
       "turnover_ratio": 0.07395993836671803,
-      "last_updated": "2026-09-07 22:59:51.104271+00:00",
+      "last_updated": "2026-09-07 23:07:58.104271+00:00",
       "order_month": "2026-09"
     },
     {
@@ -664,7 +664,7 @@
       "net_available": 822,
       "total_units_sold": 26,
       "turnover_ratio": 0.028602860286028604,
-      "last_updated": "2026-09-07 08:03:05.026915+00:00",
+      "last_updated": "2026-09-07 08:11:12.026915+00:00",
       "order_month": "2026-09"
     },
     {
@@ -676,7 +676,7 @@
       "net_available": 632,
       "total_units_sold": 12,
       "turnover_ratio": 0.018808777429467086,
-      "last_updated": "2026-09-07 03:03:18.741225+00:00",
+      "last_updated": "2026-09-07 03:11:25.741225+00:00",
       "order_month": "2026-09"
     },
     {
@@ -688,7 +688,7 @@
       "net_available": 197,
       "total_units_sold": 26,
       "turnover_ratio": 0.09420289855072464,
-      "last_updated": "2026-09-07 07:25:31.298775+00:00",
+      "last_updated": "2026-09-07 07:33:38.298775+00:00",
       "order_month": "2026-09"
     },
     {
@@ -700,7 +700,7 @@
       "net_available": 415,
       "total_units_sold": 14,
       "turnover_ratio": 0.03271028037383177,
-      "last_updated": "2026-09-07 14:15:37.214285+00:00",
+      "last_updated": "2026-09-07 14:23:44.214285+00:00",
       "order_month": "2026-09"
     },
     {
@@ -712,7 +712,7 @@
       "net_available": 240,
       "total_units_sold": 21,
       "turnover_ratio": 0.0875,
-      "last_updated": "2026-09-07 12:08:15.298603+00:00",
+      "last_updated": "2026-09-07 12:16:22.298603+00:00",
       "order_month": "2026-09"
     },
     {
@@ -724,7 +724,7 @@
       "net_available": 4,
       "total_units_sold": 21,
       "turnover_ratio": 5.25,
-      "last_updated": "2026-09-05 17:53:45.767288+00:00",
+      "last_updated": "2026-09-05 18:01:52.767288+00:00",
       "order_month": "2026-09"
     },
     {
@@ -736,7 +736,7 @@
       "net_available": 708,
       "total_units_sold": 19,
       "turnover_ratio": 0.024516129032258065,
-      "last_updated": "2026-09-05 19:03:56.687600+00:00",
+      "last_updated": "2026-09-05 19:12:03.687600+00:00",
       "order_month": "2026-09"
     },
     {
@@ -748,7 +748,7 @@
       "net_available": 292,
       "total_units_sold": 41,
       "turnover_ratio": 0.13099041533546327,
-      "last_updated": "2026-09-05 08:39:08.195669+00:00",
+      "last_updated": "2026-09-05 08:47:15.195669+00:00",
       "order_month": "2026-09"
     },
     {
@@ -760,7 +760,7 @@
       "net_available": 268,
       "total_units_sold": 24,
       "turnover_ratio": 0.07868852459016394,
-      "last_updated": "2026-09-05 23:02:26.217301+00:00",
+      "last_updated": "2026-09-05 23:10:33.217301+00:00",
       "order_month": "2026-09"
     },
     {
@@ -772,7 +772,7 @@
       "net_available": 543,
       "total_units_sold": 43,
       "turnover_ratio": 0.07049180327868852,
-      "last_updated": "2026-09-05 11:26:41.099442+00:00",
+      "last_updated": "2026-09-05 11:34:48.099442+00:00",
       "order_month": "2026-09"
     },
     {
@@ -784,7 +784,7 @@
       "net_available": 861,
       "total_units_sold": 39,
       "turnover_ratio": 0.04225352112676056,
-      "last_updated": "2026-09-05 03:33:26.069223+00:00",
+      "last_updated": "2026-09-05 03:41:33.069223+00:00",
       "order_month": "2026-09"
     },
     {
@@ -796,7 +796,7 @@
       "net_available": 749,
       "total_units_sold": 29,
       "turnover_ratio": 0.03861517976031957,
-      "last_updated": "2026-09-05 13:33:18.915476+00:00",
+      "last_updated": "2026-09-05 13:41:25.915476+00:00",
       "order_month": "2026-09"
     },
     {
@@ -808,7 +808,7 @@
       "net_available": 914,
       "total_units_sold": 19,
       "turnover_ratio": 0.020474137931034482,
-      "last_updated": "2026-09-05 07:35:16.946219+00:00",
+      "last_updated": "2026-09-05 07:43:23.946219+00:00",
       "order_month": "2026-09"
     },
     {
@@ -820,7 +820,7 @@
       "net_available": 211,
       "total_units_sold": 43,
       "turnover_ratio": 0.15925925925925927,
-      "last_updated": "2026-09-05 09:13:07.788045+00:00",
+      "last_updated": "2026-09-05 09:21:14.788045+00:00",
       "order_month": "2026-09"
     },
     {
@@ -832,7 +832,7 @@
       "net_available": 54,
       "total_units_sold": 29,
       "turnover_ratio": 0.2196969696969697,
-      "last_updated": "2026-09-08 00:33:59.119274+00:00",
+      "last_updated": "2026-09-08 00:42:06.119274+00:00",
       "order_month": "2026-09"
     },
     {
@@ -844,7 +844,7 @@
       "net_available": 666,
       "total_units_sold": 39,
       "turnover_ratio": 0.054929577464788736,
-      "last_updated": "2026-09-08 08:47:25.749521+00:00",
+      "last_updated": "2026-09-08 08:55:32.749521+00:00",
       "order_month": "2026-09"
     },
     {
@@ -856,7 +856,7 @@
       "net_available": 56,
       "total_units_sold": 37,
       "turnover_ratio": 0.3523809523809524,
-      "last_updated": "2026-09-08 09:32:41.338228+00:00",
+      "last_updated": "2026-09-08 09:40:48.338228+00:00",
       "order_month": "2026-09"
     },
     {
@@ -868,7 +868,7 @@
       "net_available": 692,
       "total_units_sold": 41,
       "turnover_ratio": 0.05807365439093484,
-      "last_updated": "2026-09-08 05:46:38.648814+00:00",
+      "last_updated": "2026-09-08 05:54:45.648814+00:00",
       "order_month": "2026-09"
     },
     {
@@ -880,7 +880,7 @@
       "net_available": 374,
       "total_units_sold": 32,
       "turnover_ratio": 0.08226221079691516,
-      "last_updated": "2026-09-08 05:52:27.040355+00:00",
+      "last_updated": "2026-09-08 06:00:34.040355+00:00",
       "order_month": "2026-09"
     },
     {
@@ -892,7 +892,7 @@
       "net_available": 396,
       "total_units_sold": 44,
       "turnover_ratio": 0.09072164948453608,
-      "last_updated": "2026-09-08 07:03:01.152985+00:00",
+      "last_updated": "2026-09-08 07:11:08.152985+00:00",
       "order_month": "2026-09"
     },
     {
@@ -904,7 +904,7 @@
       "net_available": 84,
       "total_units_sold": 11,
       "turnover_ratio": 0.09166666666666666,
-      "last_updated": "2026-09-08 09:14:28.248923+00:00",
+      "last_updated": "2026-09-08 09:22:35.248923+00:00",
       "order_month": "2026-09"
     },
     {
@@ -916,7 +916,7 @@
       "net_available": 159,
       "total_units_sold": 32,
       "turnover_ratio": 0.1951219512195122,
-      "last_updated": "2026-09-08 17:23:48.918942+00:00",
+      "last_updated": "2026-09-08 17:31:55.918942+00:00",
       "order_month": "2026-09"
     },
     {
@@ -928,7 +928,7 @@
       "net_available": 630,
       "total_units_sold": 26,
       "turnover_ratio": 0.03945371775417299,
-      "last_updated": "2026-09-08 09:16:26.919881+00:00",
+      "last_updated": "2026-09-08 09:24:33.919881+00:00",
       "order_month": "2026-09"
     },
     {
@@ -940,7 +940,7 @@
       "net_available": 801,
       "total_units_sold": 41,
       "turnover_ratio": 0.04617117117117117,
-      "last_updated": "2026-09-06 06:44:34.213872+00:00",
+      "last_updated": "2026-09-06 06:52:41.213872+00:00",
       "order_month": "2026-09"
     },
     {
@@ -952,7 +952,7 @@
       "net_available": 762,
       "total_units_sold": 31,
       "turnover_ratio": 0.03964194373401535,
-      "last_updated": "2026-09-06 22:10:50.004072+00:00",
+      "last_updated": "2026-09-06 22:18:57.004072+00:00",
       "order_month": "2026-09"
     },
     {
@@ -964,7 +964,7 @@
       "net_available": 692,
       "total_units_sold": 37,
       "turnover_ratio": 0.05346820809248555,
-      "last_updated": "2026-09-06 09:49:52.123646+00:00",
+      "last_updated": "2026-09-06 09:57:59.123646+00:00",
       "order_month": "2026-09"
     },
     {
@@ -976,7 +976,7 @@
       "net_available": 117,
       "total_units_sold": 29,
       "turnover_ratio": 0.17261904761904762,
-      "last_updated": "2026-09-06 20:41:02.746223+00:00",
+      "last_updated": "2026-09-06 20:49:09.746223+00:00",
       "order_month": "2026-09"
     },
     {
@@ -988,7 +988,7 @@
       "net_available": 664,
       "total_units_sold": 29,
       "turnover_ratio": 0.04283604135893648,
-      "last_updated": "2026-09-06 19:51:12.207480+00:00",
+      "last_updated": "2026-09-06 19:59:19.207480+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1000,7 +1000,7 @@
       "net_available": 276,
       "total_units_sold": 48,
       "turnover_ratio": 0.13114754098360656,
-      "last_updated": "2026-09-06 16:42:57.182994+00:00",
+      "last_updated": "2026-09-06 16:51:04.182994+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1012,7 +1012,7 @@
       "net_available": 648,
       "total_units_sold": 11,
       "turnover_ratio": 0.014864864864864866,
-      "last_updated": "2026-09-06 17:09:01.686847+00:00",
+      "last_updated": "2026-09-06 17:17:08.686847+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1024,7 +1024,7 @@
       "net_available": 525,
       "total_units_sold": 26,
       "turnover_ratio": 0.044596912521440824,
-      "last_updated": "2026-09-02 14:00:48.886494+00:00",
+      "last_updated": "2026-09-02 14:08:55.886494+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1036,7 +1036,7 @@
       "net_available": 701,
       "total_units_sold": 36,
       "turnover_ratio": 0.0481283422459893,
-      "last_updated": "2026-09-02 12:54:00.460942+00:00",
+      "last_updated": "2026-09-02 13:02:07.460942+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1048,7 +1048,7 @@
       "net_available": 509,
       "total_units_sold": 38,
       "turnover_ratio": 0.07465618860510806,
-      "last_updated": "2026-09-02 12:42:42.775582+00:00",
+      "last_updated": "2026-09-02 12:50:49.775582+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1060,7 +1060,7 @@
       "net_available": 763,
       "total_units_sold": 14,
       "turnover_ratio": 0.017587939698492462,
-      "last_updated": "2026-09-02 18:10:31.867895+00:00",
+      "last_updated": "2026-09-02 18:18:38.867895+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1072,7 +1072,7 @@
       "net_available": 141,
       "total_units_sold": 34,
       "turnover_ratio": 0.2236842105263158,
-      "last_updated": "2026-09-02 23:13:09.402837+00:00",
+      "last_updated": "2026-09-02 23:21:16.402837+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1084,7 +1084,7 @@
       "net_available": 254,
       "total_units_sold": 18,
       "turnover_ratio": 0.06428571428571428,
-      "last_updated": "2026-09-04 23:32:31.429507+00:00",
+      "last_updated": "2026-09-04 23:40:38.429507+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1096,7 +1096,7 @@
       "net_available": 303,
       "total_units_sold": 24,
       "turnover_ratio": 0.0625,
-      "last_updated": "2026-09-04 15:33:32.834354+00:00",
+      "last_updated": "2026-09-04 15:41:39.834354+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1108,7 +1108,7 @@
       "net_available": 624,
       "total_units_sold": 44,
       "turnover_ratio": 0.06188466947960619,
-      "last_updated": "2026-09-04 22:31:20.683622+00:00",
+      "last_updated": "2026-09-04 22:39:27.683622+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1120,7 +1120,7 @@
       "net_available": 346,
       "total_units_sold": 19,
       "turnover_ratio": 0.044186046511627906,
-      "last_updated": "2026-09-04 11:52:47.665899+00:00",
+      "last_updated": "2026-09-04 12:00:54.665899+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1132,7 +1132,7 @@
       "net_available": 359,
       "total_units_sold": 10,
       "turnover_ratio": 0.024213075060532687,
-      "last_updated": "2026-09-09 03:27:29.810261+00:00",
+      "last_updated": "2026-09-09 03:35:36.810261+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1144,7 +1144,7 @@
       "net_available": 158,
       "total_units_sold": 23,
       "turnover_ratio": 0.1329479768786127,
-      "last_updated": "2026-09-09 01:30:25.355771+00:00",
+      "last_updated": "2026-09-09 01:38:32.355771+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1156,7 +1156,7 @@
       "net_available": 906,
       "total_units_sold": 44,
       "turnover_ratio": 0.04721030042918455,
-      "last_updated": "2026-09-09 06:14:54.198204+00:00",
+      "last_updated": "2026-09-09 06:23:01.198204+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1168,7 +1168,7 @@
       "net_available": 887,
       "total_units_sold": 30,
       "turnover_ratio": 0.031055900621118012,
-      "last_updated": "2026-09-03 14:22:27.955618+00:00",
+      "last_updated": "2026-09-03 14:30:34.955618+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1180,7 +1180,7 @@
       "net_available": 253,
       "total_units_sold": 32,
       "turnover_ratio": 0.10491803278688525,
-      "last_updated": "2026-09-03 21:55:09.567376+00:00",
+      "last_updated": "2026-09-03 22:03:16.567376+00:00",
       "order_month": "2026-09"
     },
     {
@@ -1192,7 +1192,7 @@
       "net_available": 136,
       "total_units_sold": 41,
       "turnover_ratio": 0.17903930131004367,
-      "last_updated": "2026-09-03 08:36:48.665113+00:00",
+      "last_updated": "2026-09-03 08:44:55.665113+00:00",
       "order_month": "2026-09"
     }
   ]
