@@ -614,7 +614,7 @@ export default function App() {
     setLoadError("");
 
     try {
-      const response = await fetch("/api/run-pipeline", { method: "POST" });
+      const response = await fetch("/api/run_pipeline", { method: "POST" });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) {
         throw new Error(result.details || result.error || `Pipeline trigger failed (${response.status})`);
@@ -626,7 +626,7 @@ export default function App() {
         let statusResult = null;
 
         if (runId) {
-          const statusResponse = await fetch(`/api/run-pipeline?run_id=${encodeURIComponent(runId)}`);
+          const statusResponse = await fetch(`/api/run_pipeline?run_id=${encodeURIComponent(runId)}`);
           statusResult = await statusResponse.json().catch(() => ({}));
           if (!statusResponse.ok) {
             throw new Error(statusResult.details || statusResult.error || "Unable to read GitHub Actions status");
@@ -716,7 +716,7 @@ export default function App() {
             <button
               onClick={runPipeline}
               disabled={loading || pipelineState === "running"}
-              className="run-pipeline-button"
+              className="run_pipeline-button"
               type="button"
             >
               {pipelineState === "running" ? "pipeline running…" : "run pipeline"}
