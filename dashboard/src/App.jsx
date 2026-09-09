@@ -716,7 +716,7 @@ export default function App() {
             <button
               onClick={runPipeline}
               disabled={loading || pipelineState === "running"}
-              className="run_pipeline-button"
+              className="run-pipeline-button"
               type="button"
             >
               {pipelineState === "running" ? "pipeline running…" : "run pipeline"}
